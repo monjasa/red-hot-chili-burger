@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+    <body>
+        <div class="content">
+            <div class="header">
+                <a href="https://www.instagram.com/bigsmokeburger/"><img id="logo" src="images/burger-logo.png" alt="logo"/></a>
+            </div>
+            <div class="main">
+                <div class="info">
+                    <div class="price-table-div">
+                        <table>
+                            <thead>
+                                <tr class="table-head">
+                                    <th class="text-header">Component</th>
+                                    <th colspan="3">Count</th>
+                                    <th class="text-header">Price per piece</th>
+                                    <th class="text-header">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Patties</td>
+                                    <td><button id="lessPattiesButton" class="lessButton" disabled="true">-</button></td>
+                                    <td id="pattiesCount">0</td>
+                                    <td><button id="morePattiesButton" class="moreButton">+</button></td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Cheese</td>
+                                    <td><button id="lessCheeseButton" class="lessButton" disabled="true">-</button></td>
+                                    <td id="cheeseCount">0</td>
+                                    <td><button id="moreCheeseButton" class="moreButton">+</button></td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Lettuce</td>
+                                    <td><button id="lessLettuceButton" class="lessButton" disabled="true">-</button></td>
+                                    <td id="lettuceCount">0</td>
+                                    <td><button id="moreLettuceButton" class="moreButton">+</button></td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Onion</td>
+                                    <td><button id="lessOnionButton" class="lessButton" disabled="true">-</button></td>
+                                    <td id="onionCount">0</td>
+                                    <td><button id="moreOnionButton" class="moreButton">+</button></td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Tomato</td>
+                                    <td><button id="lessTomatoButton" class="lessButton" disabled="true">-</button></td>
+                                    <td id="tomatoCount">0</td>
+                                    <td><button id="moreTomatoButton" class="moreButton">+</button></td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="total-row">
+                                    <td id="total" colspan="5">Total:</td>
+                                    <td id="burgerPrice">0</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="order">
+                        <span>Order me!</span>
+                    </div>
+                    <div class="coupon-field">
+                        <span>Have a Coupon?</span>
+                        <span id="hashtag">#</span>
+                        <input type="text" id="coupon" maxlength="6"/>
+                    </div>
+                </div>
+                <div class="burger">
+                    <span class="burger-title">Meet your burger</span>
+                    <div class="layers">
+                        <div id="lettuce-layer" class="layer"></div>
+                        <div id="onion-layer" class="layer"></div>
+                        <div id="tomato-layer" class="layer"></div>
+                        <div id="cheese-layer" class="layer"></div>
+                        <div id="patties-layer" class="layer"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <span>&copy 2019 &mdash; 2020</span>
+            </div>
+        </div>
+
+        <script src="script/script.js" async defer></script>
+    </body>
+</html>

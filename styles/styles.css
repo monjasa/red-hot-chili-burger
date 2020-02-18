@@ -1,0 +1,220 @@
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/quicksand/v20/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkP8o58a-wg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/quicksand/v20/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkCEv58a-wg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-size: 16pt;
+    font-family: Quicksand, sans-serif;
+    background-color: #231f20;
+}
+
+button {
+    font-family: inherit;
+    font-size: 14pt;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.header {
+    flex: 0 0 auto;
+    width: 100%;
+    background-color: #c5921a;
+}
+
+.header #logo {
+    display: block;
+    margin: 1em auto;
+    width: 10em;
+}
+
+.main {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1 1 auto;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.burger {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    align-content: center;
+    row-gap: 2.5em;
+    flex: 1 1 auto;
+}
+
+.burger .burger-title {
+    grid-row: 1 / span 1;
+    color: #c5921a;
+    align-self: center;
+    font-size: 20pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.layers {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2 / span 1;
+    max-height: 20em;
+    overflow-y: auto;
+    align-items: center;
+    padding-left: 2em;
+}
+
+.layer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order {
+    display: grid;
+    align-items: center;
+    background-color: #c5921a;
+    text-transform: uppercase;
+    width: 10em;
+    height: 3em;
+    text-align: center;
+    border-radius: 1em;
+}
+
+.order:hover {
+    cursor: pointer;
+}
+
+.order span {
+    vertical-align: middle;
+}
+
+.coupon-field {
+    color: #c5921a;
+    margin-top: 0.5em;
+}
+
+.coupon-field #hashtag {
+    margin-left: 0.5em;
+    font-weight: 600;
+}
+
+.coupon-field #coupon {
+    background-color: initial;
+    color: #f2f3ae;
+    border: 2px solid #c5921a;
+    border-radius: 1em;
+    font-family: inherit;
+    font-size: inherit;
+    width: 5em;
+    text-align: center;
+}
+
+.coupon-field #coupon:focus {
+    outline: none;
+}
+
+.price-table-div {
+    background-color: #c5921a;
+    border-radius: 1em;
+    text-align: center;
+    width: 30em;
+    margin: 3em auto;
+}
+
+.price-table-div table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.price-table-div button {
+    cursor: pointer;
+    border: initial;
+    background-color: #231f20;
+    color: #c5921a;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 20pt;
+    box-sizing: border-box; 
+}
+
+.price-table-div button:focus {
+    outline: none;
+}
+
+.price-table-div th,
+.price-table-div td {
+    overflow: hidden;
+    width: 3em;
+}
+
+.price-table-div tr,
+.price-table-div td {
+    padding-bottom: 0.65em;
+}
+
+.price-table-div th {
+    padding-top: 0.75em;
+    padding-bottom: 0.5em;
+}
+
+.price-table-div .text-header {
+    width: 8em;
+}
+
+.price-table-div tfoot td {
+    padding-top: 0.75em;
+    padding-bottom: 1em;
+}
+
+.price-table-div .total-row {
+    border-top: 2px dashed #231f20;
+    font-weight: 700;
+}
+
+
+.price-table-div #total {
+    text-align: right;
+    
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    flex: 0 0 2em;
+    color: #f2f3ae;
+    padding-top: 1em;
+}
