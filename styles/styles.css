@@ -26,6 +26,7 @@ body {
     font-size: 16pt;
     font-family: Quicksand, sans-serif;
     background-color: #231f20;
+    user-select: none;
 }
 
 button {
@@ -43,6 +44,7 @@ button {
     flex: 0 0 auto;
     width: 100%;
     background-color: #c5921a;
+    box-shadow: 0 2px 5px #424041;
 }
 
 .header #logo {
@@ -64,8 +66,10 @@ button {
     grid-template-rows: auto auto;
     justify-content: center;
     align-content: center;
-    row-gap: 2.5em;
+    row-gap: 1em;
     flex: 1 1 auto;
+    margin-top: 2.5em;
+    margin-left: 2em;
 }
 
 .burger .burger-title {
@@ -78,14 +82,29 @@ button {
     text-align: center;
 }
 
+.burger ::-webkit-scrollbar {
+    padding-right: 0.25em;
+    width: 5px;
+}
+  
+.burger ::-webkit-scrollbar-track {
+    background: #424041;
+    border-radius: 1em;
+}
+
+.burger ::-webkit-scrollbar-thumb {
+    background: #c5921a;
+    border-radius: 1em;
+}
+
 .layers {
     display: flex;
     flex-direction: column;
     grid-row: 2 / span 1;
-    max-height: 20em;
+    max-height: 22.5em;
     overflow-y: auto;
     align-items: center;
-    padding-left: 2em;
+    
 }
 
 .layer {
@@ -103,16 +122,25 @@ button {
 .order {
     display: grid;
     align-items: center;
+    color: #231f20;
     background-color: #c5921a;
     text-transform: uppercase;
     width: 10em;
     height: 3em;
+    font-weight: 700;
     text-align: center;
     border-radius: 1em;
+    box-shadow: 1px 1px 5px #424041;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .order:hover {
     cursor: pointer;
+}
+
+.order:active {
+    box-shadow: 2px 2px 5px #424041, inset 1px 1px 5px #241f13;
+    transform: translate(2px, 2px);
 }
 
 .order span {
@@ -121,7 +149,7 @@ button {
 
 .coupon-field {
     color: #c5921a;
-    margin-top: 0.5em;
+    margin-top: 1em;
 }
 
 .coupon-field #hashtag {
@@ -145,16 +173,19 @@ button {
 }
 
 .price-table-div {
+    color: #231f20;
     background-color: #c5921a;
     border-radius: 1em;
     text-align: center;
     width: 30em;
     margin: 3em auto;
+    box-shadow: 2px 2px 10px #424041;
 }
 
 .price-table-div table {
     table-layout: fixed;
-    border-collapse: collapse;
+    border-collapse: collapse;   
+    user-select: text;
 }
 
 .price-table-div button {
@@ -168,7 +199,13 @@ button {
     border-radius: 50%;
     font-weight: 700;
     font-size: 20pt;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+.price-table-div button:active {
+    transform: translate(1px, 1px);
 }
 
 .price-table-div button:focus {
@@ -212,9 +249,29 @@ button {
 }
 
 .footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     text-align: center;
     flex: 0 0 2em;
     color: #f2f3ae;
     padding-top: 1em;
+}
+
+.social-networks {
+    margin-bottom: 0.50em;
+}
+
+.social-button {
+    width: 2.5em;
+    border-radius: 50%;
+    box-shadow: 0 0 3px #424041;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.social-button:active {
+    box-shadow: 1px 1px 3px #424041, inset 4px 4px 3px #241f13;
+    transform: translate(2px, 2px);
 }

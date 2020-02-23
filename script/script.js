@@ -47,42 +47,48 @@ let tomatoCount = 0;
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
 
-function removeLayer(ingridientUrl) {
+function removeLayer(layerToRemove) {
 
-    let layer;
+
+    ingridientUrl = layerToRemove.getElementsByTagName('img')[0].src;
+    let parentLayer;
 
     switch (ingridientUrl) {
         case pattyUrl:
             pattiesCount--;
-            layer = pattiesLayer;
+            parentLayer = pattiesLayer;
             if (pattiesCount == 0) disactivateButton(lessPattiesButton);
             break;
         case cheeseUrl:
             cheeseCount--;
-            layer = cheeseLayer;
+            parentLayer = cheeseLayer;
             if (cheeseCount == 0) disactivateButton(lessCheeseButton);
             break;
         case lettuceUrl:
             lettuceCount--;
-            layer = lettuceLayer;
+            parentLayer = lettuceLayer;
             if (lettuceCount == 0) disactivateButton(lessLettuceButton);
             break;
         case onionUrl:
             onionCount--;
-            layer = onionLayer;
+            parentLayer = onionLayer;
             if (onionCount == 0) disactivateButton(lessOnionButton);
             break;
         case tomatoUrl:
             tomatoCount--;
-            layer = tomatoLayer;
+            parentLayer = tomatoLayer;
             if (tomatoCount == 0) disactivateButton(lessTomatoButton);
             break;
         default:
-            layer = layers;
+            parentLayer = layers;
     }
 
-    layer.removeChild(layer.firstChild);
+    window.getComputedStyle(layerToRemove).opacity;
+    layerToRemove.style.opacity = '0';
+
+    parentLayer.removeChild(layerToRemove)
     updateTable();
+
 }
 
 function activateButton(button) {
@@ -97,10 +103,6 @@ function disactivateButton(button) {
     button.style.backgroundColor = '#332e30';
     button.style.color = '#786740';
     button.style.cursor = 'default';
-}
-
-function removeLayerFromIcon() {
-    removeLayer(this.getElementsByTagName('img')[0].src);
 }
 
 function setupPrices() {
@@ -138,14 +140,16 @@ function getLayerFromUrl(imageUrl, isDeletable) {
     let imgDiv = document.createElement('div');
     imgDiv.style.borderRadius = '50%';
 
-    let img = document.createElement("img");
+    let img = document.createElement('img');
     
     img.src = imageUrl;
-    img.height = "50";
-    img.width = "50";
-    
+    img.height = '50';
+    img.width = '50';
+    img.ondragstart = function() { return false; }
 
-    if (isDeletable) imgDiv.onclick = removeLayerFromIcon;
+    if (isDeletable) imgDiv.onclick = function(e) {
+        removeLayer(this);
+    };
 
     
     imgDiv.style.height = '60px';
@@ -153,6 +157,9 @@ function getLayerFromUrl(imageUrl, isDeletable) {
     imgDiv.style.display = 'grid';
     imgDiv.style.justifyItems = 'center';
     imgDiv.style.alignItems = 'center';
+
+    imgDiv.style.opacity = '0';
+    imgDiv.style.transition = 'opacity 0.25s ease';
 
     imgDiv.appendChild(img);
 
@@ -207,6 +214,9 @@ function insertLayer(layerToInsert, followingLayer) {
             followingLayer.parentNode.insertBefore(layerToInsert, followingLayer.nextSibling);
     }
 
+    window.getComputedStyle(layerToInsert).opacity;
+    layerToInsert.style.opacity = '1';
+
     updateTable();
 }
 
@@ -215,7 +225,7 @@ morePattiesButton.onclick = function() {
 }
 
 lessPattiesButton.onclick = function() {
-    removeLayer(pattyUrl);
+    removeLayer(pattiesLayer.firstChild);
 }
 
 moreCheeseButton.onclick = function() {
@@ -223,7 +233,7 @@ moreCheeseButton.onclick = function() {
 }
 
 lessCheeseButton.onclick = function() {
-    removeLayer(cheeseUrl);
+    removeLayer(cheeseLayer.firstChild);
 }
 
 moreLettuceButton.onclick = function() {
@@ -231,7 +241,7 @@ moreLettuceButton.onclick = function() {
 }
 
 lessLettuceButton.onclick = function() {
-    removeLayer(lettuceUrl);
+    removeLayer(lettuceLayer.firstChild);
 }
 
 moreOnionButton.onclick = function() {
@@ -239,7 +249,7 @@ moreOnionButton.onclick = function() {
 }
 
 lessOnionButton.onclick = function() {
-    removeLayer(onionUrl);
+    removeLayer(onionLayer.firstChild);
 }
 
 moreTomatoButton.onclick = function() {
@@ -247,22 +257,18 @@ moreTomatoButton.onclick = function() {
 }
 
 lessTomatoButton.onclick = function() {
-    removeLayer(tomatoUrl);
-}
-
-document.getElementById('moreCheeseButton').onclick = function() {
-    insertLayer(getLayerFromUrl(cheeseUrl, true), upperBun);
-    document.getElementById('lessCheeseButton').disabled = false;
-}
-
-document.getElementById('lessCheeseButton').onclick = function() {
-    removeLayer(cheeseUrl);
-    if (cheeseCount == 0) this.disabled = true;
+    removeLayer(tomatoLayer.firstChild);
 }
 
 function setupStartBurger() {
+
     layers.insertBefore(upperBun, lettuceLayer);
+    window.getComputedStyle(upperBun).opacity;
+    upperBun.style.opacity = '1';
+
     layers.appendChild(bottomBun);
+    window.getComputedStyle(bottomBun).opacity;
+    bottomBun.style.opacity = '1';
 
     insertLayer(getLayerFromUrl(pattyUrl, true), upperBun);
     insertLayer(getLayerFromUrl(cheeseUrl, true), upperBun);
