@@ -50,7 +50,7 @@ button {
 .header #logo {
     display: block;
     margin: 1em auto;
-    width: 10em;
+    width: 8.5em;
 }
 
 .main {
@@ -80,6 +80,7 @@ button {
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
+    padding-right: 1em;
 }
 
 .burger ::-webkit-scrollbar {
@@ -104,7 +105,7 @@ button {
     max-height: 22.5em;
     overflow-y: auto;
     align-items: center;
-    
+    padding-right: 1em;
 }
 
 .layer {
@@ -265,7 +266,7 @@ button {
 }
 
 .social-button {
-    width: 2.5em;
+    width: 2em;
     border-radius: 50%;
     box-shadow: 0 0 3px #424041;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
