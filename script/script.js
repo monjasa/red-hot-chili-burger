@@ -1,10 +1,10 @@
-const upperBunUrl = 'https://i.imgur.com/8JTCYrq.png';
-const bottomBunUrl = 'https://i.imgur.com/AI3gUwK.png';
-const pattyUrl = 'https://i.imgur.com/UQcELJy.png';
-const cheeseUrl = 'https://i.imgur.com/CAKlI0W.png';
-const lettuceUrl = 'https://i.imgur.com/zcNUJlK.png';
-const onionUrl = 'https://i.imgur.com/aXzXX3f.png';
-const tomatoUrl = 'https://i.imgur.com/KerYML6.png';
+const upperBunUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/upper-bun.png';
+const bottomBunUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/bottom-bun.png';
+const pattyUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/patty.png';
+const cheeseUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/cheese.png';
+const lettuceUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/lettuce.png';
+const onionUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/onion.png';
+const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/tomato.png';
 
 const layers = document.querySelector('.layers');
 const priceTable = document.querySelector('.price-table-div');
