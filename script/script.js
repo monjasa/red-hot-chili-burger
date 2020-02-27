@@ -14,14 +14,15 @@ const bottomBun = getLayerFromUrl(bottomBunUrl, false);
 
 class Ingredient {
 
-    constructor(ingredientUrl, ingredientClassName, price, layer, addButton, removeButton) {
+    constructor(ingredientUrl, ingredientClassName, price, layer, tableRow) {
         this.ingredientUrl = ingredientUrl;
         this.ingredientClassName = ingredientClassName;
         this.price = price;
         this.count = 0;
         this.layer = layer;
-        this.addButton = addButton;
-        this.removeButton = removeButton;
+        this.tableRow = tableRow;
+        this.addButton = tableRow.querySelector('.moreButton');
+        this.removeButton = tableRow.querySelector('.lessButton');
     }
 
     sayHi() {
@@ -63,6 +64,10 @@ class Ingredient {
         return this.layer;
     }
 
+    getTableRow() {
+        return this.tableRow;
+    }
+
     getAddButton() {
         return this.addButton;
     }
@@ -74,19 +79,19 @@ class Ingredient {
 }
 
 const patty = new Ingredient(pattyUrl, "patty-ingredient", 1.00, document.getElementById('patties-layer'),
-    document.getElementById('morePattiesButton'), document.getElementById('lessPattiesButton'));
+    document.getElementById('patty-table-row'));
 
 const cheese = new Ingredient(cheeseUrl, "cheese-ingredient", 0.50, document.getElementById('cheese-layer'), 
-    document.getElementById('moreCheeseButton'), document.getElementById('lessCheeseButton'));
+    document.getElementById('cheese-table-row'));
 
 const lettuce = new Ingredient(lettuceUrl, "lettuce-ingredient", 0.30, document.getElementById('lettuce-layer'),
-    document.getElementById('moreLettuceButton'), document.getElementById('lessLettuceButton'));
+    document.getElementById('lettuce-table-row'));
 
 const onion = new Ingredient(onionUrl, "onion-ingredient", 0.30, document.getElementById('onion-layer'),
-    document.getElementById('moreOnionButton'), document.getElementById('lessOnionButton'));
+    document.getElementById('onion-table-row'));
 
 const tomato = new Ingredient(tomatoUrl, "tomato-ingredient", 0.30, document.getElementById('tomato-layer'),
-    document.getElementById('moreTomatoButton'), document.getElementById('lessTomatoButton'));
+    document.getElementById('tomato-table-row'));
 
 const ingredientClassesMap = new Map();
 ingredientClassesMap.set(patty.getIngredientClassName(), patty);
@@ -118,11 +123,9 @@ function disactivateButton(button) {
 
 function setupPrices() {
 
-    for (var i = 0; i < ingredients.length; i++) {
-        let row = priceTable.getElementsByTagName('tr')[i + 1];
-        let cell = row.getElementsByTagName('td')[4];
-        cell.innerHTML = '$' + Number.parseFloat(ingredients[i].getPrice()).toFixed(2);
-    }
+    ingredients.forEach(ingredient => {
+        ingredient.getTableRow().querySelector('.piece-price').innerHTML = '$' + Number.parseFloat(ingredient.getPrice()).toFixed(2);
+    });
 }
 
 function calculatePrice() {
@@ -130,9 +133,7 @@ function calculatePrice() {
     let price = 1.00;
     ingredients.forEach(ingredient => price += ingredient.getCount() * ingredient.getPrice());
 
-    let rows = priceTable.getElementsByTagName('tr');
-    let priceCell = rows[rows.length - 1].getElementsByTagName('td')[1];
-    priceCell.innerHTML = '$' + Number.parseFloat(price).toFixed(2);
+    document.querySelector('.total-price').innerHTML = '$' + Number.parseFloat(price).toFixed(2);
 }
 
 window.onload = function() {
@@ -177,17 +178,13 @@ function getLayerFromUrl(imageUrl, isDeletable) {
 
 function updateTable() {
 
-    for (var i = 0; i < ingredients.length; i++) {
+    ingredients.forEach(ingredient => {
+        let tableRow = ingredient.getTableRow();
+        let ingredientCount = ingredient.getCount();
 
-        let ingredientCount = ingredients[i].getCount();
-        
-        let row = priceTable.getElementsByTagName('tr')[i + 1];
-        let countCell = row.getElementsByTagName('td')[2];
-        countCell.innerHTML = ingredientCount > 0 ? ingredientCount : '-';
-
-        let priceCell = row.getElementsByTagName('td')[5];
-        priceCell.innerHTML = ingredientCount > 0 ? '$' + Number.parseFloat(ingredientCount * ingredients[i].getPrice()).toFixed(2) : '-';
-    }
+        tableRow.querySelector('.ingredient-count').innerHTML = ingredientCount > 0 ? ingredientCount : '-';
+        tableRow.querySelector('.layer-price').innerHTML = ingredientCount > 0 ? '$' + Number.parseFloat(ingredientCount * ingredient.getPrice()).toFixed(2) : '-';
+    })
 
     calculatePrice();
 }
