@@ -136,8 +136,11 @@ function calculatePrice() {
     document.querySelector('.total-price').innerHTML = '$' + Number.parseFloat(price).toFixed(2);
 }
 
+window.onresize = updatePosition;
+
 window.onload = function() {
 
+    updatePosition();
     setupPrices();
 
     setupButtonInteractions();
@@ -183,7 +186,8 @@ function updateTable() {
         let ingredientCount = ingredient.getCount();
 
         tableRow.querySelector('.ingredient-count').innerHTML = ingredientCount > 0 ? ingredientCount : '-';
-        tableRow.querySelector('.layer-price').innerHTML = ingredientCount > 0 ? '$' + Number.parseFloat(ingredientCount * ingredient.getPrice()).toFixed(2) : '-';
+        tableRow.querySelector('.layer-price').innerHTML = ingredientCount > 0 ? 
+            '$' + Number.parseFloat(ingredientCount * ingredient.getPrice()).toFixed(2) : '-';
     })
 
     calculatePrice();
@@ -220,4 +224,14 @@ function setupStartBurger() {
     addIngredient(tomato.buildIngredient(true));
     addIngredient(cheese.buildIngredient(true));
     addIngredient(lettuce.buildIngredient(true));
+}
+
+function updatePosition() {
+    let burgerDiv = document.querySelector('.burger');
+
+    if (matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.info').insertBefore(burgerDiv, document.querySelector('.order'));
+    } else {
+        document.querySelector('.main').appendChild(burgerDiv);
+    }
 }
