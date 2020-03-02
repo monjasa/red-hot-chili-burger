@@ -226,11 +226,12 @@ function setupStartBurger() {
     addIngredient(lettuce.buildIngredient(true));
 }
 
+
 function updatePosition() {
     let burgerDiv = document.querySelector('.burger');
 
     if (matchMedia("(max-width: 768px)").matches) {
-        document.querySelector('.info').insertBefore(burgerDiv, document.querySelector('.order'));
+        document.querySelector('.burger-form').insertBefore(burgerDiv, document.querySelector('.order'));
     } else {
         document.querySelector('.main').appendChild(burgerDiv);
     }
