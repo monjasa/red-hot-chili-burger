@@ -34,6 +34,7 @@ button {
 }
 
 .content {
+    background-image: url('../images/img-pattern-black.png');
     display: flex;
     flex-direction: column;
     min-height: 100%;
@@ -239,6 +240,49 @@ button {
     outline: none;
 }
 
+.locations {
+    background-image: url('../images/img-table-cafe-horizontal.jpg');
+    color: #fdfdd8;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 600px;
+    flex-direction: column;
+    margin-top: 2.5em;
+    padding-top: 2.5rem;
+    overflow: hidden;
+}
+
+.photo-title {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.80);
+    width: 100%;
+    height: 5rem;
+    line-height: 5rem;
+} 
+
+.locations-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 2.5rem 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    line-height: 2.5em;
+    background-color: rgba(0, 0, 0, 0.80);
+    margin: 1.5rem;
+    border-radius: 1em;
+}
+
 .footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -248,11 +292,7 @@ button {
     text-align: center;
     flex: 0 0 2em;
     color: #fdfdd8;
-    padding-top: 1em;
-}
-
-.social-networks {
-    margin-bottom: 0.50em;
+    padding: 1em 0;
 }
 
 .social-button {
@@ -314,6 +354,11 @@ button {
     .main {
         flex-direction: column;
         flex-wrap: wrap-reverse;
+    }
+
+    .card {
+        width: 90%;
+        margin: 1.5rem;
     }
 }
   
