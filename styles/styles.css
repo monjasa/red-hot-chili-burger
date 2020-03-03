@@ -61,8 +61,15 @@ button {
     margin: 0 auto;
 }
 
-.vegetarian-div {
+.burger-types {
     display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.burger-type-div {
+    display: flex;
+    justify-content: center;
     color: #c5921a;
     font-weight: 700;
     width: 100%;
@@ -70,11 +77,12 @@ button {
     margin-bottom: 1em;
 }
 
-.vegetarian-div span {
-    margin: 0 0.5em 0 0.75em;
+.burger-type-div span {
+    margin: 0 0.5rem;
 }
 
-.vegetarian-toggle input {
+.burger-toggle input {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     cursor: pointer;
     position: relative;
     width: 4em;
@@ -87,11 +95,11 @@ button {
     transition: background-color 0.2s ease;
 }
 
-.vegetarian-toggle input:checked {
+.burger-toggle input:checked {
     background-color: #c5921a;
 }
 
-.vegetarian-toggle input:before {
+.burger-toggle input::before {
     content: '';
     position: absolute;
     width: 2em;
@@ -105,13 +113,18 @@ button {
     transition: 0.2s ease;
 }
 
-.vegetarian-toggle input:checked:before {
+.burger-toggle input:checked::before {
     left: 2em;
 }
 
 .vegetarian-leaf {
     width: 0.75em;
     height: 0.75em;
+}
+
+.spicy-pepper {
+    width: 0.8em;
+    height: 0.8em;
 }
 
 .burger {
@@ -160,11 +173,80 @@ button {
     border-radius: 1em;
 }
 
+.sauce-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #231f20;
+    background-color: #c5921a;
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 5rem;
+    border-radius: 1em;
+    box-shadow: 2px 2px 5px #424041;
+}
+
+.sauce-header {
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.sauces {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.sauce {
+    display: flex;
+    align-items: center;
+}
+
+.sauce label {
+    cursor: pointer;
+    display: block;
+    margin-left: 0.5em;
+}
+
+.sauce input {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    -webkit-appearance: none;
+    width: 2.5em;
+    height: 2.5em;
+    background-color: #ab7e16;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.sauce input:checked {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15), 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+#classic:checked {
+    background-color:#eBC6a0;
+}
+
+#garlic:checked {
+    background-color:#c2c0a5;
+}
+
+#ranch:checked {
+    background-color:#dcfaef;
+}
+
+.sauce input:focus {
+    outline: none;
+}
+
 .layers {
     display: flex;
     flex-direction: column;
     margin-top: 0.5em;
-    max-height: 22.5rem;
+    max-height: 27.5rem;
     overflow-y: auto;
     padding: 0 1em;
     align-items: center;
