@@ -413,18 +413,15 @@ form {
     }
 
     .burger {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        flex: 3 1 0%;
+        margin: 2em 0 0 0;
     }
+
+    
 
     .footer {
         display: flex;
         flex-direction: column;
         justify-items: center;
-        
     }
 
     .social-networks {
@@ -467,7 +464,6 @@ form {
 
     .price-table-div {
         width: 100%;
-        margin: 2em auto;
     }
 
     .social-button {
