@@ -22,26 +22,26 @@
             </div>
             <div class="main">
                 <div class="info">
-                    <form action="php-test.php" target="_blank" method="POST" class="burger-form">
+                    <form action="php-test.php" target="_blank" method="GET" class="burger-form">
 
                         <div class="burger-types">
                             <div id="vegetarian-div" class="burger-type-div">
                                 <div class="burger-toggle">
-                                    <input type="checkbox" id="vegetarian"/>
+                                    <input type="checkbox" id="vegetarian" name="vegetarian"/>
                                 </div>
                                 <span>Vegetarian</span>
                                 <div class="vegetarian-icon">
-                                    <img src="images/leaf.png" alt="leaf" class="vegetarian-leaf"/>
+                                    <img src="images/leaf.png" class="spicy-pepper" alt="leaf" draggable="false"/>
                                 </div>
                             </div>
 
                             <div id="spicy-div" class="burger-type-div">
                                 <div class="burger-toggle">
-                                    <input type="checkbox" id="spicy"/>
+                                    <input type="checkbox" id="spicy" name="spicy"/>
                                 </div>
                                 <span>Spicy</span>
                                 <div class="spicy-icon">
-                                    <img src="images/pepper.png" alt="pepper" class="spicy-pepper"/>
+                                    <img src="images/pepper.png" class="spicy-pepper" alt="pepper" draggable="false"/>
                                 </div>
                             </div>
                         </div>
