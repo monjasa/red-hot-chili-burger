@@ -23,6 +23,15 @@
             <div class="main">
                 <div class="info">
                     <form action="phpTest.php" target="_blank" method="POST" class="burger-form">
+                        <div class="vegetarian-div">
+                            <div class="vegetarian-toggle">
+                                <input type="checkbox" id="vegetarian"/>
+                            </div>
+                            <span>Vegetarian</span>
+                            <div class="vegetarian-icon">
+                                <img src="images/leaf.png" alt="leaf" class="vegetarian-leaf"/>
+                            </div>
+                        </div>
                         <div class="price-table-div">
                             <div class="price-table-row table-header">
                                 <span>Layer</span>
@@ -102,7 +111,16 @@
                 </div>
 
                 <div class="burger">
-                    <span class="burger-title">Meet your burger</span>
+                    <div class="burger-header">
+                        <div class="vegetarian-icon">
+                            <img src="images/leaf.png" alt="leaf" class="vegetarian-leaf"/>
+                        </div>
+                        <span class="burger-title">Meet your burger</span>
+                        <div class="vegetarian-icon">
+                            <img src="images/leaf.png" alt="leaf" class="vegetarian-leaf"/>
+                        </div>
+                    </div>
+                    
                     <div class="layers">
                         <div id="lettuce-layer" class="layer"></div>
                         <div id="onion-layer" class="layer"></div>

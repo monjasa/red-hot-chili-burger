@@ -1,6 +1,7 @@
 const upperBunUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/upper-bun.png';
 const bottomBunUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/bottom-bun.png';
 const pattyUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/patty.png';
+const veggiePattyUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/veggie-patty.png';
 const cheeseUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/cheese.png';
 const lettuceUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/lettuce.png';
 const onionUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/onion.png';
@@ -8,6 +9,8 @@ const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa
 
 const layers = document.querySelector('.layers');
 const priceTable = document.querySelector('.price-table-div');
+
+const vegetarianToggle = document.getElementById('vegetarian');
 
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
@@ -32,16 +35,25 @@ class Ingredient {
     removeIngredient() {
         this.count--;
         this.layer.removeChild(this.layer.firstChild);
+
+        if (this.addButton.disabled) activateButton(this.addButton);
         if (this.count == 0) disactivateButton(this.removeButton);
     }
 
     buildIngredient(isDeletable) {
+
         this.count++;
         if (this.removeButton.disabled) activateButton(this.removeButton);
+
+        if (this.count == 9) disactivateButton(this.addButton);
 
         let ingredientDiv = getLayerFromUrl(this.ingredientUrl, isDeletable);
         ingredientDiv.classList.add(this.ingredientClassName);
         return ingredientDiv;
+    }
+
+    setIngredientUrl(newUrl) {
+        this.ingredientUrl = newUrl;
     }
 
     getIngredientUrl() {
@@ -226,6 +238,24 @@ function setupStartBurger() {
     addIngredient(lettuce.buildIngredient(true));
 }
 
+const vegetarianIconsArray = Array.from(document.querySelector('.burger-header').getElementsByClassName('vegetarian-icon'));
+
+vegetarianToggle.addEventListener('change', (event) => {
+    if (event.target.checked) {
+        patty.setIngredientUrl(veggiePattyUrl);
+        replacePatties(veggiePattyUrl);
+        vegetarianIconsArray.forEach(icon => icon.style.opacity = '1');
+    } else {
+        patty.setIngredientUrl(pattyUrl);
+        replacePatties(pattyUrl);
+        vegetarianIconsArray.forEach(icon => icon.style.opacity = '0');
+    }
+})
+
+function replacePatties(pattyToInsertUrl) {
+    let children = patty.getLayer().children;
+    Array.from(children).forEach(element => element.querySelector('img').src = pattyToInsertUrl);
+}
 
 function updatePosition() {
     let burgerDiv = document.querySelector('.burger');
