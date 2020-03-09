@@ -11,6 +11,7 @@ const layers = document.querySelector('.layers');
 const priceTable = document.querySelector('.price-table-div');
 
 const vegetarianToggle = document.getElementById('vegetarian');
+const garnishContainer = document.querySelector('.garnish-div');
 
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
@@ -264,5 +265,108 @@ function updatePosition() {
         document.querySelector('.burger-form').insertBefore(burgerDiv, document.querySelector('.order'));
     } else {
         document.querySelector('.main').appendChild(burgerDiv);
+    }
+}
+
+let garnishSelection = garnishContainer.getElementsByTagName('select')[0];
+
+let selectedOption = document.createElement('div');
+selectedOption.setAttribute('class', "select-selected");
+selectedOption.innerHTML = garnishSelection.options[garnishSelection.selectedIndex].innerHTML;
+
+garnishContainer.appendChild(selectedOption);
+
+let optionList = document.createElement('div');
+optionList.setAttribute('class', "select-items select-hide");
+
+optionList.style.borderBottomLeftRadius = '1em';
+optionList.style.borderBottomRightRadius = '1em';
+
+for (i = 1; i < garnishSelection.length; i++) {
+
+    let option = document.createElement('div');
+    option.innerHTML = garnishSelection.options[i].innerHTML;
+
+    option.addEventListener('click', function(e) {
+        
+        let garnishSelection = this.parentNode.parentNode.getElementsByTagName('select')[0];
+        let previousOption = this.parentNode.previousSibling;
+
+        for (j = 0; j < garnishSelection.length; j++) {
+
+            if (garnishSelection.options[j].innerHTML == this.innerHTML) {
+
+                garnishSelection.selectedIndex = j;
+                previousOption.innerHTML = this.innerHTML;
+                let options = this.parentNode.getElementsByClassName('same-as-selected');
+
+                for (k = 0; k < options.length; k++) {
+                    options[k].removeAttribute('class');
+                }
+
+                this.setAttribute('class', "same-as-selected");
+                break;
+            }
+        }
+        previousOption.click();
+    });
+
+    optionList.appendChild(option);
+}
+
+
+let isSelectOpened = false;
+
+garnishContainer.appendChild(optionList);
+selectedOption.addEventListener("click", function(e) {
+    e.stopPropagation();
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+
+    if (isSelectOpened) {
+        this.style.borderBottomLeftRadius = '1em';
+        this.style.borderBottomRightRadius = '1em';
+        isSelectOpened = false;
+    } else {
+        this.style.borderBottomLeftRadius = '0';
+        this.style.borderBottomRightRadius = '0';
+        isSelectOpened = true;
+    }
+});
+
+function closeAllSelect(element) {
+  
+  let array = [];
+  let selectedItems = document.getElementsByClassName("select-items");
+  let selectedOptions = document.getElementsByClassName("select-selected");
+
+  for (i = 0; i < selectedOptions.length; i++) {
+    if (element == selectedOptions[i]) {
+        array.push(i)
+    } else {
+        selectedOptions[i].classList.remove("select-arrow-active");
+    }
+
+    selectedOptions[i].style.borderBottomLeftRadius = '1em';
+    selectedOptions[i].style.borderBottomRightRadius = '1em';
+    isSelectOpened = false;
+  }
+
+  for (i = 0; i < selectedItems.length; i++) {
+    if (array.indexOf(i)) {
+        selectedItems[i].classList.add("select-hide");
+    }
+  }
+}
+
+document.addEventListener("click", closeAllSelect);
+
+document.getElementById('options').onchange = displayOptions;
+
+function displayOptions() {
+    if (document.getElementById('options').checked) {
+        document.querySelector('.options-textarea textarea').style.display = 'block';
+    } else {
+        document.querySelector('.options-textarea textarea').style.display = 'none';
     }
 }

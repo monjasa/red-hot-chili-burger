@@ -22,7 +22,7 @@
             </div>
             <div class="main">
                 <div class="info">
-                    <form action="php-test.php" target="_blank" method="GET" class="burger-form">
+                    <form action="" target="_blank" method="GET" class="burger-form">
 
                         <div class="burger-types">
                             <div id="vegetarian-div" class="burger-type-div">
@@ -133,6 +133,31 @@
                                     <input type="radio" id="ranch" name="sauce" value="ranch"/>
                                     <label for="ranch">Ranch</label>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="custom">
+                            <div class="garnish-div">
+                                <select id="garnish" name="garnish">
+                                    <option value="none">Select Garnish:</option>
+                                    <option value="fries">French Fries</option>
+                                    <option value="onion-rings">Onion Rings</option>
+                                    <option value="cheese-platter">Cheese Platter</option>
+                                </select>
+                            </div>
+
+                            <div class="options-div">
+                                <div class="options-checkbox">
+                                    <label for="options" class="label-container">Anything to add?
+                                        <input type="checkbox" id="options"/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+        
+                            </div>
+
+                            <div class="options-textarea">
+                                <textarea placeholder="Say it right there!" name="options" rows="5" cols="30"></textarea>
                             </div>
                         </div>
 
