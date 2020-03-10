@@ -15,11 +15,6 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 html,
 body {
     font-size: 16pt;
@@ -507,7 +502,6 @@ form {
     box-shadow: 1px 1px 5px #424041;
 }
 
-/*style the arrow inside the select element:*/
 .select-selected:after {
     position: absolute;
     content: "";
@@ -520,13 +514,11 @@ form {
         
 }
 
-/*point the arrow upwards when the select box is open (active):*/
 .select-selected.select-arrow-active:after {
     border-color: transparent transparent #231f20 transparent;
     top: 0.7em;
 }
 
-/*style the items (options), including the selected item:*/
 .select-items div, .select-selected {
     color: #231f20;
     padding: 0.5em 1.25em;
@@ -536,7 +528,6 @@ form {
     user-select: none;
 }
 
-/*style items (options):*/
 .select-items {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     position: absolute;
@@ -548,7 +539,6 @@ form {
     box-shadow: 1px 1px 5px #424041;
 }
 
-/*hide the items when the select box is closed:*/
 .select-hide {
     display: none;
 }

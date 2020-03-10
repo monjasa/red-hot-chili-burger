@@ -153,12 +153,18 @@ window.onresize = updatePosition;
 
 window.onload = function() {
 
+    setupSelection();
     updatePosition();
     setupPrices();
+
+    document.addEventListener('click', closeAllSelect);
+    document.getElementById('options').onchange = displayOptions;
+    document.querySelector('.order').onclick = takeOrder;
 
     setupButtonInteractions();
     ingredients.forEach(ingredient => disactivateButton(ingredient.getRemoveButton()));
     
+    paintOnCanvas();
     setupStartBurger();
 }
 
@@ -268,71 +274,74 @@ function updatePosition() {
     }
 }
 
-let garnishSelection = garnishContainer.getElementsByTagName('select')[0];
-
-let selectedOption = document.createElement('div');
-selectedOption.setAttribute('class', "select-selected");
-selectedOption.innerHTML = garnishSelection.options[garnishSelection.selectedIndex].innerHTML;
-
-garnishContainer.appendChild(selectedOption);
-
-let optionList = document.createElement('div');
-optionList.setAttribute('class', "select-items select-hide");
-
-optionList.style.borderBottomLeftRadius = '1em';
-optionList.style.borderBottomRightRadius = '1em';
-
-for (i = 1; i < garnishSelection.length; i++) {
-
-    let option = document.createElement('div');
-    option.innerHTML = garnishSelection.options[i].innerHTML;
-
-    option.addEventListener('click', function(e) {
-        
-        let garnishSelection = this.parentNode.parentNode.getElementsByTagName('select')[0];
-        let previousOption = this.parentNode.previousSibling;
-
-        for (j = 0; j < garnishSelection.length; j++) {
-
-            if (garnishSelection.options[j].innerHTML == this.innerHTML) {
-
-                garnishSelection.selectedIndex = j;
-                previousOption.innerHTML = this.innerHTML;
-                let options = this.parentNode.getElementsByClassName('same-as-selected');
-
-                for (k = 0; k < options.length; k++) {
-                    options[k].removeAttribute('class');
-                }
-
-                this.setAttribute('class', "same-as-selected");
-                break;
-            }
-        }
-        previousOption.click();
-    });
-
-    optionList.appendChild(option);
-}
-
-
 let isSelectOpened = false;
 
-garnishContainer.appendChild(optionList);
-selectedOption.addEventListener("click", function(e) {
-    e.stopPropagation();
-    this.nextSibling.classList.toggle("select-hide");
-    this.classList.toggle("select-arrow-active");
+function setupSelection() {
 
-    if (isSelectOpened) {
-        this.style.borderBottomLeftRadius = '1em';
-        this.style.borderBottomRightRadius = '1em';
-        isSelectOpened = false;
-    } else {
-        this.style.borderBottomLeftRadius = '0';
-        this.style.borderBottomRightRadius = '0';
-        isSelectOpened = true;
+    let garnishSelection = garnishContainer.getElementsByTagName('select')[0];
+
+    let selectedOption = document.createElement('div');
+    selectedOption.setAttribute('class', "select-selected");
+    selectedOption.innerHTML = garnishSelection.options[garnishSelection.selectedIndex].innerHTML;
+
+    garnishContainer.appendChild(selectedOption);
+
+    let optionList = document.createElement('div');
+    optionList.setAttribute('class', "select-items select-hide");
+
+    optionList.style.borderBottomLeftRadius = '1em';
+    optionList.style.borderBottomRightRadius = '1em';
+
+    for (i = 1; i < garnishSelection.length; i++) {
+
+        let option = document.createElement('div');
+        option.innerHTML = garnishSelection.options[i].innerHTML;
+
+        option.addEventListener('click', function(e) {
+            
+            let garnishSelection = this.parentNode.parentNode.getElementsByTagName('select')[0];
+            let previousOption = this.parentNode.previousSibling;
+
+            for (j = 0; j < garnishSelection.length; j++) {
+
+                if (garnishSelection.options[j].innerHTML == this.innerHTML) {
+
+                    garnishSelection.selectedIndex = j;
+                    previousOption.innerHTML = this.innerHTML;
+                    let options = this.parentNode.getElementsByClassName('same-as-selected');
+
+                    for (k = 0; k < options.length; k++) {
+                        options[k].removeAttribute('class');
+                    }
+
+                    this.setAttribute('class', "same-as-selected");
+                    break;
+                }
+            }
+            previousOption.click();
+        });
+
+        optionList.appendChild(option);
     }
-});
+
+    garnishContainer.appendChild(optionList);
+
+    selectedOption.addEventListener("click", function(e) {
+        e.stopPropagation();
+        this.nextSibling.classList.toggle("select-hide");
+        this.classList.toggle("select-arrow-active");
+
+        if (isSelectOpened) {
+            this.style.borderBottomLeftRadius = '1em';
+            this.style.borderBottomRightRadius = '1em';
+            isSelectOpened = false;
+        } else {
+            this.style.borderBottomLeftRadius = '0';
+            this.style.borderBottomRightRadius = '0';
+            isSelectOpened = true;
+        }
+    });
+}
 
 function closeAllSelect(element) {
   
@@ -359,14 +368,60 @@ function closeAllSelect(element) {
   }
 }
 
-document.addEventListener("click", closeAllSelect);
-
-document.getElementById('options').onchange = displayOptions;
-
 function displayOptions() {
     if (document.getElementById('options').checked) {
         document.querySelector('.options-textarea textarea').style.display = 'block';
     } else {
         document.querySelector('.options-textarea textarea').style.display = 'none';
     }
+}
+
+function takeOrder(event) {
+
+    let sauceValue = document.forms["order"]["sauce"].value;
+    if (sauceValue = null || sauceValue == "") {
+        alert('You should choose sauce at first!');
+        event.preventDefault();
+        return false;
+    }
+
+    let garnishValue = document.forms["order"]["garnish"].value;
+    if (garnishValue = null || garnishValue == "") {
+        alert('Please, choose your garnish.');
+        event.preventDefault();
+        return false;
+    }
+}
+
+function paintOnCanvas() {
+    
+    let canvas = document.querySelector(".canvas");
+    let context = canvas.getContext("2d");
+
+    let gradient = context.createRadialGradient(75, 50, 5, 90, 60, 100);
+    gradient.addColorStop(0, "#231f20");
+    gradient.addColorStop(1, "#c5921a");
+
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, 200, 100);
+
+    context.font = "30px Cambria";
+    context.strokeText("Red Hot Chili", 10, 50);
+
+    context.beginPath();
+    context.arc(95, 50, 40, 0, Math.PI);
+    context.stroke();
+}
+
+document.querySelector('.copy-span').onclick = () => {
+
+    if (document.querySelector('.diagram').style.display == 'block') 
+        document.querySelector('.diagram').style.display = 'none';
+    else 
+        document.querySelector('.diagram').style.display = 'block';
+
+    if (document.querySelector('.canvas').style.display == 'block') 
+        document.querySelector('.canvas').style.display = 'none';
+    else 
+        document.querySelector('.canvas').style.display = 'block';
 }

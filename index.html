@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Red Hot Chili Burger</title>
@@ -14,7 +15,18 @@
 
         <meta name="msapplication-TileColor" content="#2b5797">
         <meta name="theme-color" content="#ffffff">
+
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+
     </head>
+
     <body>
         <div class="content">
             <div class="header">
@@ -22,7 +34,7 @@
             </div>
             <div class="main">
                 <div class="info">
-                    <form action="" target="_blank" method="GET" class="burger-form">
+                    <form id="order" action="" target="_blank" method="GET" class="burger-form">
 
                         <div class="burger-types">
                             <div id="vegetarian-div" class="burger-type-div">
@@ -139,7 +151,7 @@
                         <div class="custom">
                             <div class="garnish-div">
                                 <select id="garnish" name="garnish">
-                                    <option value="none">Select Garnish:</option>
+                                    <option value="">Select Garnish:</option>
                                     <option value="fries">French Fries</option>
                                     <option value="onion-rings">Onion Rings</option>
                                     <option value="cheese-platter">Cheese Platter</option>
@@ -215,6 +227,12 @@
                         <p>Second Floor</p>
                         <p>Portland, Maine</p>
                     </div>
+                    <div class="diagram" style="width: 20rem; height: 10rem; display: none;">
+
+                    </div>
+                    <canvas class="canvas" width="200" height="100" style="display: none;">
+
+                    </canvas>
                 </div>
             </div>
             
@@ -227,10 +245,32 @@
                     <a href="https://www.instagram.com/monja.nya/"><img class="social-button" src="images/social-pinterest.png" draggable="false"/></a>
                     <a href="https://www.instagram.com/monja.nya/"><img class="social-button" src="images/social-linkedin.png" draggable="false"/></a>
                 </div>
-                <span>&copy; 2016 &mdash; 2020</span>
+                <span class="copy-span">&copy; 2016 &mdash; 2020</span>
             </div>
         </div>
 
         <script src="script/script.js" async defer></script>
+
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Sauce', 'Votes'],
+                ['Classic', 657],
+                ['Garlic', 1024],
+                ['Ranch', 342],
+            ]);
+        
+            var options = {
+                title: 'Best sauce of the week',
+            };
+
+            var chart = new google.visualization.PieChart(document.querySelector('.diagram'));
+            chart.draw(data, options);
+            
+            }
+        </script>
     </body>
 </html>
