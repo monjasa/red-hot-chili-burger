@@ -1,3 +1,10 @@
+@use "bootstrap";
+
+.element {
+    background-color: bootstrap.$body-bg;
+    @include bootstrap.float-left;
+}
+
 @font-face {
     font-family: 'Quicksand';
     font-style: normal;
@@ -17,4 +24,8 @@
 
 body {
     font-family: Quicksand, sans-serif !important;
+}
+
+.navbar-collapse.collapse.in {
+    display: inline-block;
 }
