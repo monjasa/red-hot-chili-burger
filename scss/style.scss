@@ -1,5 +1,99 @@
 @import 'fonts.scss';
 
+$yellow: #c5921a;
+$dark-gray: #231f20;
+
+$font-family-sans-serif: 'Quicksand', sans-serif;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 body {
-    font-family: 'Quicksand', sans-serif;
+    background-color: $dark-gray;
+    background-image: url('../assets/img/img-pattern-black.png');
+}
+
+nav {
+    background-color: $dark-gray;
+    background-image: url('../assets/img/img-pattern-black.png');
+
+    .navbar-dark {
+        color: $yellow;
+    }
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.table {
+    background-color: $yellow;
+    text-align: center;
+    border-radius: 1.5em;
+
+    thead > tr > th {
+        border-bottom: none;
+    }
+
+    tbody > tr > td, th {
+        border-top: none;
+    }
+
+    tfoot > tr > td {
+        border-top: 2px solid #231f20;
+    }
+
+    .btn-circle {
+        background-color: $dark-gray;
+        color: $yellow;
+        font-weight: 700;
+        border-radius: 100%;
+        border: none;
+        width: 2em;
+        height: 2em;
+        padding: 0;
+
+        &:disabled {
+            cursor: default;
+        }  
+    }
+}
+
+.layers {
+    display: flex;
+    flex-direction: column;
+    max-height: 27.5em;
+    overflow-y: auto;
+    align-items: center;
+
+    &::-webkit-scrollbar {
+        padding-right: 0.25em;
+        width: 5px;
+    }
+      
+    &::-webkit-scrollbar-track {
+        background: #424041;
+        border-radius: 1em;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #c5921a;
+        border-radius: 1em;
+    }
+
+    .layer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}
+
+.ingredient-image-div {
+    height: 60px;
+    width: 60px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
 }
