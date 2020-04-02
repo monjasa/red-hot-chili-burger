@@ -138,20 +138,15 @@ function calculatePrice() {
 
 function getLayerFromUrl(imageUrl, isDeletable) {
 
-    let imgDiv = document.createElement('div');
-    $(imgDiv).css('border-radius', '50%');
-    $(imgDiv).addClass('ingredient-image-div');
-
     let img = document.createElement('img');
-    $(img).attr('src', imageUrl).height(50).width (50);
-    
+    $(img).attr('src', imageUrl).height(50).width(50);
     $(img).on('dragstart', e => false);
-
+    
+    let imgDiv = document.createElement('div');
+    $(imgDiv).addClass('ingredient-image-div');
+    
     if (isDeletable) $(imgDiv).click(e => removeIngredientFromLayer(imgDiv));
-    
-    
-
-    imgDiv.append(img);
+    $(imgDiv).append(img);
 
     return imgDiv;
 }

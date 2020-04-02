@@ -1,5 +1,22 @@
 @import 'fonts.scss';
 
+// DEVICE LIST //
+$xs-min: "only screen and (min-width:none)";
+$xs-max: "only screen and (max-width:520px)";
+$xs-sm: "only screen (min-width: none) and (max-width:767px)";
+
+$sm-min: "only screen and (min-width:768px)";
+$sm-max: "only screen and (max-width:991px)";
+$sm-md: "only screen (min-width: 768px) and (max-width:991px)";
+
+$md-min: "only screen and (min-width:992px)";
+$md-max: "only screen and (max-width:1199px)";
+$md-lg: "only screen (min-width: 992px) and (max-width:1199px)";
+
+$lg-min: "only screen and (min-width:1200px)";
+$lg-max: "only screen and (max-width:none)";
+
+$white: #fdfdd8;
 $yellow: #c5921a;
 $dark-gray: #231f20;
 
@@ -40,7 +57,7 @@ nav {
     }
 
     tfoot > tr > td {
-        border-top: 2px solid #231f20;
+        border-top: 1px solid #231f20;
     }
 
     .btn-circle {
@@ -59,38 +76,88 @@ nav {
     }
 }
 
-.layers {
-    display: flex;
-    flex-direction: column;
-    max-height: 27.5em;
-    overflow-y: auto;
-    align-items: center;
+.burger-by-layers {
 
-    &::-webkit-scrollbar {
-        padding-right: 0.25em;
-        width: 5px;
-    }
-      
-    &::-webkit-scrollbar-track {
-        background: #424041;
-        border-radius: 1em;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        background: #c5921a;
-        border-radius: 1em;
+    .layers-title {
+        color: #c5921a;
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: center;
     }
 
-    .layer {
+    .layers {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        flex-direction: column;
+        max-height: 27.5em;
+        overflow-y: auto;
+        align-items: center;
+    
+        &::-webkit-scrollbar {
+            padding-right: 0.25em;
+            width: 5px;
+        }
+          
+        &::-webkit-scrollbar-track {
+            background: #424041;
+            border-radius: 1em;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: #c5921a;
+            border-radius: 1em;
+        }
+    
+        .layer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+    }
+}
+
+#locations {
+    background-image: url('../assets/img/img-table-cafe-horizontal.jpg');
+    color: $white;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-top: 2.5rem;
+    padding: 2.5rem 0;
+    overflow: hidden;
+
+    .locations-title {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+        vertical-align: middle;
+        background-color: rgba(0, 0, 0, 0.80);
+        height: 5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .card {
+        text-align: center;
+        width: 40%;
+        line-height: 1.75rem;
+        background-color: rgba(0, 0, 0, 0.80);
+        margin: 2.5rem 1.5rem;
+        padding-top: 1rem;
+        border-radius: 1em;
+    }
+}
+
+@include media-breakpoint-between(xs, sm){
+    .card {
+        width: 90% !important;
     }
 }
 
 .ingredient-image-div {
     height: 60px;
     width: 60px;
+    border-radius: 50%;
     display: grid;
     justify-items: center;
     align-items: center;
