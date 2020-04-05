@@ -44,12 +44,23 @@ nav {
 }
 
 .table {
+    $table-border-radius: 1.5em;
+
     background-color: $yellow;
     text-align: center;
-    border-radius: 1.5em;
+    border-radius: $table-border-radius;
 
     thead > tr > th {
         border-bottom: none;
+        background-color: #a87d16;
+
+        &:first-child {
+            border-top-left-radius: $table-border-radius;
+        }
+
+        &:last-child {
+            border-top-right-radius: $table-border-radius;
+        }
     }
 
     tbody > tr > td, th {
@@ -122,7 +133,6 @@ nav {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    margin-top: 2.5rem;
     padding: 2.5rem 0;
     overflow: hidden;
 
@@ -138,13 +148,34 @@ nav {
     }
 
     .card {
-        text-align: center;
         width: 40%;
         line-height: 1.75rem;
         background-color: rgba(0, 0, 0, 0.80);
         margin: 2.5rem 1.5rem;
         padding-top: 1rem;
         border-radius: 1em;
+    }
+}
+
+footer {
+    .social-networks {
+        .social-button {
+            width: 3rem;
+            border-radius: 50%;
+            box-shadow: 0 0 3px #424041;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+            &:active {
+                box-shadow: 1px 1px 3px #424041, inset 4px 4px 3px #241f13;
+                transform: translate(2px, 2px);
+            }
+        }
+    }
+
+    .footer-copyright {
+        display: grid;
+        align-items: center;
+        color: $white;
     }
 }
 

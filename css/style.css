@@ -7161,7 +7161,12 @@ nav {
   text-align: center;
   border-radius: 1.5em; }
   .table thead > tr > th {
-    border-bottom: none; }
+    border-bottom: none;
+    background-color: #a87d16; }
+    .table thead > tr > th:first-child {
+      border-top-left-radius: 1.5em; }
+    .table thead > tr > th:last-child {
+      border-top-right-radius: 1.5em; }
   .table tbody > tr > td, .table th {
     border-top: none; }
   .table tfoot > tr > td {
@@ -7211,7 +7216,6 @@ nav {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin-top: 2.5rem;
   padding: 2.5rem 0;
   overflow: hidden; }
   #locations .locations-title {
@@ -7224,13 +7228,26 @@ nav {
     height: 5rem;
     margin-bottom: 2.5rem; }
   #locations .card {
-    text-align: center;
     width: 40%;
     line-height: 1.75rem;
     background-color: rgba(0, 0, 0, 0.8);
     margin: 2.5rem 1.5rem;
     padding-top: 1rem;
     border-radius: 1em; }
+
+footer .social-networks .social-button {
+  width: 3rem;
+  border-radius: 50%;
+  box-shadow: 0 0 3px #424041;
+  transition: box-shadow 0.2s ease, transform 0.2s ease; }
+  footer .social-networks .social-button:active {
+    box-shadow: 1px 1px 3px #424041, inset 4px 4px 3px #241f13;
+    transform: translate(2px, 2px); }
+
+footer .footer-copyright {
+  display: grid;
+  align-items: center;
+  color: #fdfdd8; }
 
 @media (max-width: 767.98px) {
   .card {

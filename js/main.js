@@ -10,6 +10,16 @@ const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
 
+function adjustPositioning() {
+    if ($(window).outerWidth() >= 992) {
+        $('footer').find('.row:eq(1)').append($('.social-networks'));
+    } else {
+        $('footer').find('.row:eq(0)').append($('.social-networks'));
+    }
+}
+
+$(window).on('resize', adjustPositioning);
+
 class Ingredient {
 
     constructor(ingredientUrl, ingredientClassName, price, layer, tableRow) {
@@ -78,7 +88,6 @@ class Ingredient {
 }
 
 let patty, cheese, lettuce, onion, tomato;
-
 const ingredients = new Map();
 
 $(document).ready(function() {
@@ -95,6 +104,7 @@ $(document).ready(function() {
     ingredients.set(onion.getIngredientClassName(), onion);
     ingredients.set(tomato.getIngredientClassName(), tomato);
 
+    adjustPositioning();
     setupStartBurger();
 
     setupButtonInteractions();
