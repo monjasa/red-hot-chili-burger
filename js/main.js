@@ -7,6 +7,8 @@ const lettuceUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjas
 const onionUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/onion.png';
 const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/tomato.png';
 
+const jsonPath = 'https://next.json-generator.com/api/json/get/Ek01KTSPO';
+
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
 
@@ -91,6 +93,18 @@ let patty, cheese, lettuce, onion, tomato;
 const ingredients = new Map();
 
 $(document).ready(function() {
+    
+    $("input[type='submit']").click(function() { return false; });
+    $('#order-button').click(function(){
+        $.ajax({
+            url: jsonPath,
+            dataType: 'json',
+            beforeSend: () => alert('Your order is ready to be sent...'),
+            success: data => alert(data.order.message),
+            complete: () => alert('It\'s ready!'),  
+            error: () => alert('Cannot access the server, try again later.')
+        });
+    });
 
     patty = new Ingredient(pattyUrl, "patty-ingredient", 1.00, $('#patty-layer'), $('#patty-table-row'));
     cheese = new Ingredient(cheeseUrl, "cheese-ingredient", 0.50, $('#cheese-layer'), $('#cheese-table-row'));
