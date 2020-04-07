@@ -7224,30 +7224,48 @@ nav {
   margin-left: 0px;
   margin-right: 0px; }
 
-.table {
+#about-us {
+  color: #fdfdd8;
+  background-image: url("../assets/img/img-burger-horizontal.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 400px;
+  padding: 0; }
+  #about-us .about-us-title {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 50%; }
+
+#order .order-title {
+  color: #fdfdd8;
+  background-color: rgba(0, 0, 0, 0.35); }
+
+#order .table {
   background-color: #c5921a;
   text-align: center;
   vertical-align: middle;
   border-radius: 1.5em; }
-  .table thead > tr > th {
+  #order .table thead > tr > th {
     border-bottom: none;
     background-color: #a87d16; }
-    .table thead > tr > th:first-child {
+    #order .table thead > tr > th:first-child {
       border-top-left-radius: 1.5em; }
-    .table thead > tr > th:last-child {
+    #order .table thead > tr > th:last-child {
       border-top-right-radius: 1.5em; }
-  .table tbody > tr > td, .table th {
+  #order .table tbody > tr > td, #order .table th {
     border-top: none; }
-  .table tfoot > tr > td {
+  #order .table tfoot > tr > td {
     border-top: 1px solid #231f20; }
-  .table .ingredient-count {
+  #order .table .ingredient-count {
     padding: 0;
     margin: 0; }
-    .table .ingredient-count:focus {
+    #order .table .ingredient-count:focus {
       outline: none; }
-    .table .ingredient-count::placeholder {
+    #order .table .ingredient-count::placeholder {
       color: #231f20; }
-  .table .btn-circle {
+  #order .table .btn-circle {
     background-color: #231f20;
     color: #c5921a;
     font-size: 1em;
@@ -7257,36 +7275,36 @@ nav {
     width: 2em;
     height: 2em;
     padding: 0; }
-    .table .btn-circle:disabled {
+    #order .table .btn-circle:disabled {
       cursor: default; }
 
-.burger-by-layers .layers-title {
+#order .burger-by-layers .layers-title {
   color: #c5921a;
   font-weight: 600;
   text-transform: uppercase;
   text-align: center; }
 
-.burger-by-layers .layers {
+#order .burger-by-layers .layers {
   display: flex;
   flex-direction: column;
   max-height: 25rem;
   overflow-y: auto;
   align-items: center; }
-  .burger-by-layers .layers::-webkit-scrollbar {
+  #order .burger-by-layers .layers::-webkit-scrollbar {
     padding-right: 0.25em;
     width: 5px; }
-  .burger-by-layers .layers::-webkit-scrollbar-track {
+  #order .burger-by-layers .layers::-webkit-scrollbar-track {
     background: #424041;
     border-radius: 1em; }
-  .burger-by-layers .layers::-webkit-scrollbar-thumb {
+  #order .burger-by-layers .layers::-webkit-scrollbar-thumb {
     background: #c5921a;
     border-radius: 1em; }
-  .burger-by-layers .layers .layer {
+  #order .burger-by-layers .layers .layer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly; }
 
-#order-button {
+#order #order-button {
   width: 60%;
   height: 3.5em;
   border: none;
@@ -7298,7 +7316,7 @@ nav {
   border-radius: 1em;
   box-shadow: 1px 1px 5px #424041;
   transition: box-shadow 0.15s ease, transform 0.15s ease; }
-  #order-button:active {
+  #order #order-button:active {
     box-shadow: 2px 2px 5px #424041, inset 1px 1px 5px #241f13;
     transform: translate(2px, 2px); }
 
@@ -7337,9 +7355,14 @@ footer .social-networks .social-button {
     transform: translate(2px, 2px); }
 
 footer .footer-copyright {
+  font-size: 1.08rem;
   display: grid;
   align-items: center;
   color: #fdfdd8; }
+
+@media (min-width: 768px) {
+  .footer-copyright {
+    font-size: 1.14rem !important; } }
 
 @media (max-width: 767.98px) {
   .card {
