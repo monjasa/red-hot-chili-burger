@@ -22,11 +22,14 @@ $dark-gray: #231f20;
 
 $font-family-sans-serif: 'Quicksand', sans-serif;
 
+$font-size-base: 1.2rem;
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 body {
     background-color: $dark-gray;
     background-image: url('../assets/img/img-pattern-black.png');
+    
 }
 
 nav {
@@ -182,6 +185,16 @@ footer {
 @include media-breakpoint-between(xs, sm){
     .card {
         width: 90% !important;
+    }
+
+    table {
+        font-size: 0.85 * $font-size-base;
+    }
+}
+
+@include media-breakpoint-between(sm, md) {
+    table {
+        font-size: 0.90 * $font-size-base;
     }
 }
 
