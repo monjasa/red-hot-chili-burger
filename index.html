@@ -29,110 +29,123 @@
         </nav>
 
         <div class="bg">
-            <div class="row mt-2 mt-md-1">
-                <div class="col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-0 col-lg-6 offset-lg-1">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Layer</th>
-                                    <th colspan="3">Count</th>
-                                    <th>Piece price</th>
-                                    <th>Price</th>
-                                </tr>    
-                            </thead>
-                            <tbody>
-                                <tr id="patty-table-row">
-                                    <td>Patties</td>
-                                    <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                    <td class="ingredient-count"></td>
-                                    <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                    <td class="piece-price"></td>
-                                    <td class="layer-price"></td>
-                                </tr>
-                                <tr id="cheese-table-row">
-                                    <td>Cheese</td>
-                                    <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                    <td class="ingredient-count"></td>
-                                    <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                    <td class="piece-price"></td>
-                                    <td class="layer-price"></td>
-                                </tr>
-                                <tr id="lettuce-table-row">
-                                    <td>Lettuce</td>
-                                    <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                    <td class="ingredient-count"></td>
-                                    <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                    <td class="piece-price"></td>
-                                    <td class="layer-price"></td>
-                                </tr>
-                                <tr id="onion-table-row">
-                                    <td>Onion</td>
-                                    <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                    <td class="ingredient-count"></td>
-                                    <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                    <td class="piece-price"></td>
-                                    <td class="layer-price"></td>
-                                </tr>
-                                <tr id="tomato-table-row">
-                                    <td>Tomato</td>
-                                    <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                    <td class="ingredient-count"></td>
-                                    <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                    <td class="piece-price"></td>
-                                    <td class="layer-price"></td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="5" style="text-align: right;">Total:</td>
-                                    <td id="total-price"></td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-            
-                    <div class="container-fluid text-center">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" id="classic" name="sauce" value="classic"/> Classic
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" id="garlic" name="sauce" value="garlic"/> Garlic
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" id="ranch" name="sauce" value="ranch"/> Ranch
-                                    </label>
+            <form id="burger-form">
+                <div class="row mt-2 mt-md-1">
+                    <div class="col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-0 col-lg-6 offset-lg-1">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Layer</th>
+                                        <th colspan="3">Count</th>
+                                        <th>Piece price</th>
+                                        <th>Price</th>
+                                    </tr>    
+                                </thead>
+                                <tbody>
+                                    <tr id="patty-table-row">
+                                        <td>Patties</td>
+                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                        <td>
+                                            <input type="text" name="patties" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                        </td>
+                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                        <td class="piece-price"></td>
+                                        <td class="layer-price"></td>
+                                    </tr>
+                                    <tr id="cheese-table-row">
+                                        <td>Cheese</td>
+                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                        <td>
+                                            <input type="text" name="cheese" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                        </td>
+                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                        <td class="piece-price"></td>
+                                        <td class="layer-price"></td>
+                                    </tr>
+                                    <tr id="lettuce-table-row">
+                                        <td>Lettuce</td>
+                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                        <td>
+                                            <input type="text" name="lettuce" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                        </td>
+                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                        <td class="piece-price"></td>
+                                        <td class="layer-price"></td>
+                                    </tr>
+                                    <tr id="onion-table-row">
+                                        <td>Onion</td>
+                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                        <td>
+                                            <input type="text" name="onion" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                        </td>
+                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                        <td class="piece-price"></td>
+                                        <td class="layer-price"></td>
+                                    </tr>
+                                    <tr id="tomato-table-row">
+                                        <td>Tomato</td> 
+                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                        <td>
+                                            <input type="text" name="tomato" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                        </td>
+                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                        <td class="piece-price"></td>
+                                        <td class="layer-price"></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5" style="text-align: right;">Total:</td>
+                                        <td id="total-price"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                
+                        <div class="container-fluid text-center">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-secondary">
+                                            <input type="radio" id="classic" name="sauce" value="classic"/> Classic
+                                        </label>
+                                        <label class="btn btn-secondary">
+                                            <input type="radio" id="garlic" name="sauce" value="garlic"/> Garlic
+                                        </label>
+                                        <label class="btn btn-secondary">
+                                            <input type="radio" id="ranch" name="sauce" value="ranch"/> Ranch
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
+                            <br/>
                         </div>
-                        <br/>
-                        <div class="row">
-                            <div class="col-12">
-                                <input type="submit" class="btn btn-primary btn-lg" value="ORDER ME!">
-                            </div>
+                    </div>
+
+                    <div class="burger-by-layers col-sm-12 col-md-3 offset-md-1 col-lg-3 offset-lg-1 mt-2 mt-md-0">
+                        <div class="container-fluid layers-title">
+                            <h5><strong>Meet your burger!</strong></h5>
+                        </div>
+                        <div class="container layers">
+                            <div id="lettuce-layer" class="layer"></div>
+                            <div id="onion-layer" class="layer"></div>
+                            <div id="tomato-layer" class="layer"></div>
+                            <div id="cheese-layer" class="layer"></div>
+                            <div id="patty-layer" class="layer"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="burger-by-layers col-sm-12 col-md-3 offset-md-1 col-lg-3 offset-lg-1 mt-4 mt-md-0">
-                    <div class="container-fluid layers-title">
-                        <h4><strong>Meet your burger!</strong></h4>
-                    </div>
-                    <div class="container layers">
-                        <div id="lettuce-layer" class="layer"></div>
-                        <div id="onion-layer" class="layer"></div>
-                        <div id="tomato-layer" class="layer"></div>
-                        <div id="cheese-layer" class="layer"></div>
-                        <div id="patty-layer" class="layer"></div>
+                <div class="row mt-4 mt-md-2">
+                    <div class="col-12 text-center">
+                        <input type="submit" class="btn btn-primary btn-lg" id="order-button" value="Order me!">
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
 
-        <div id="locations" class="container-fluid mt-2 mt-md-4">
+        <div id="locations" class="container-fluid mt-4">
             <div class="container-fluid locations-title">
                 <h2>Locations</h2>
             </div>

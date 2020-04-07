@@ -131,7 +131,7 @@ function updateTable() {
         let tableRow = ingredient.getTableRow();
         let ingredientCount = ingredient.getCount();
 
-        tableRow.find('.ingredient-count').html(ingredientCount > 0 ? ingredientCount : '-');
+        tableRow.find('td .ingredient-count:text').val(ingredientCount > 0 ? ingredientCount : '');
         tableRow.find('.layer-price').html(ingredientCount > 0 ? '$' + Number.parseFloat(ingredientCount * ingredient.getPrice()).toFixed(2) : '-');
     })
 
@@ -191,3 +191,11 @@ function setupStartBurger() {
     addIngredientToLayer(cheese.buildIngredient(true));
     addIngredientToLayer(lettuce.buildIngredient(true));
 }
+
+$("#burger-form").submit(function() {
+    $(this).find(":input").filter(function() {
+        return !this.value;
+    }).attr("disabled", true);
+
+    return true;
+});

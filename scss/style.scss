@@ -51,6 +51,7 @@ nav {
 
     background-color: $yellow;
     text-align: center;
+    vertical-align: middle;
     border-radius: $table-border-radius;
 
     thead > tr > th {
@@ -74,9 +75,23 @@ nav {
         border-top: 1px solid #231f20;
     }
 
+    .ingredient-count {
+        padding: 0;
+        margin: 0;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: $dark-gray;
+        }
+    }
+
     .btn-circle {
         background-color: $dark-gray;
         color: $yellow;
+        font-size: 1em;
         font-weight: 700;
         border-radius: 100%;
         border: none;
@@ -94,7 +109,6 @@ nav {
 
     .layers-title {
         color: #c5921a;
-        font-size: 1.25rem;
         font-weight: 600;
         text-transform: uppercase;
         text-align: center;
@@ -103,7 +117,7 @@ nav {
     .layers {
         display: flex;
         flex-direction: column;
-        max-height: 27.5em;
+        max-height: 25rem;
         overflow-y: auto;
         align-items: center;
     
@@ -127,6 +141,26 @@ nav {
             flex-wrap: wrap;
             justify-content: space-evenly;
         }
+    }
+}
+
+#order-button {
+    width: 60%;
+    height: 3.5em;
+    border: none;
+    color: #231f20;
+    background-color: #c5921a;
+    font-size: inherit;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+    border-radius: 1em;
+    box-shadow: 1px 1px 5px #424041;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+    &:active {
+        box-shadow: 2px 2px 5px #424041, inset 1px 1px 5px #241f13;
+        transform: translate(2px, 2px);
     }
 }
 
@@ -188,7 +222,12 @@ footer {
     }
 
     table {
-        font-size: 0.85 * $font-size-base;
+        font-size: 0.80 * $font-size-base;
+
+        .btn-circle {
+            width: 1.80em !important;
+            height: 1.80em !important;
+        }
     }
 }
 

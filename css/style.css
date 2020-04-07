@@ -7227,6 +7227,7 @@ nav {
 .table {
   background-color: #c5921a;
   text-align: center;
+  vertical-align: middle;
   border-radius: 1.5em; }
   .table thead > tr > th {
     border-bottom: none;
@@ -7239,9 +7240,17 @@ nav {
     border-top: none; }
   .table tfoot > tr > td {
     border-top: 1px solid #231f20; }
+  .table .ingredient-count {
+    padding: 0;
+    margin: 0; }
+    .table .ingredient-count:focus {
+      outline: none; }
+    .table .ingredient-count::placeholder {
+      color: #231f20; }
   .table .btn-circle {
     background-color: #231f20;
     color: #c5921a;
+    font-size: 1em;
     font-weight: 700;
     border-radius: 100%;
     border: none;
@@ -7253,7 +7262,6 @@ nav {
 
 .burger-by-layers .layers-title {
   color: #c5921a;
-  font-size: 1.25rem;
   font-weight: 600;
   text-transform: uppercase;
   text-align: center; }
@@ -7261,7 +7269,7 @@ nav {
 .burger-by-layers .layers {
   display: flex;
   flex-direction: column;
-  max-height: 27.5em;
+  max-height: 25rem;
   overflow-y: auto;
   align-items: center; }
   .burger-by-layers .layers::-webkit-scrollbar {
@@ -7277,6 +7285,22 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly; }
+
+#order-button {
+  width: 60%;
+  height: 3.5em;
+  border: none;
+  color: #231f20;
+  background-color: #c5921a;
+  font-size: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 1em;
+  box-shadow: 1px 1px 5px #424041;
+  transition: box-shadow 0.15s ease, transform 0.15s ease; }
+  #order-button:active {
+    box-shadow: 2px 2px 5px #424041, inset 1px 1px 5px #241f13;
+    transform: translate(2px, 2px); }
 
 #locations {
   background-image: url("../assets/img/img-table-cafe-horizontal.jpg");
@@ -7321,7 +7345,10 @@ footer .footer-copyright {
   .card {
     width: 90% !important; }
   table {
-    font-size: 1.02rem; } }
+    font-size: 0.96rem; }
+    table .btn-circle {
+      width: 1.80em !important;
+      height: 1.80em !important; } }
 
 @media (min-width: 576px) and (max-width: 991.98px) {
   table {
