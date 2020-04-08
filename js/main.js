@@ -7,7 +7,7 @@ const lettuceUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjas
 const onionUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/onion.png';
 const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/tomato.png';
 
-const jsonPath = 'https://next.json-generator.com/api/json/get/Ek01KTSPO';
+const jsonPath = 'https://my-json-server.typicode.com/Monjasa/fake-json-server/db';
 
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
@@ -18,9 +18,9 @@ function adjustPositioning() {
     } else {
         $('footer').find('.row:eq(0)').append($('.social-networks'));
     }
-}
 
-$(window).on('resize', adjustPositioning);
+    $(document).scroll();
+}
 
 class Ingredient {
 
@@ -93,15 +93,55 @@ let patty, cheese, lettuce, onion, tomato;
 const ingredients = new Map();
 
 $(document).ready(function() {
+
+    $(window).on('resize', adjustPositioning);
+
+    var menu = $('#menu');
+    var origOffsetY = menu.offset().top;
+
+    function scroll() {
+        if ($(window).scrollTop() >= origOffsetY) {
+            $(menu).addClass('fixed-top');
+        } else {
+            $(menu).removeClass('fixed-top');
+        }
+    }
     
-    $("input[type='submit']").click(function() { return false; });
-    $('#order-button').click(function(){
+    $(document).scroll(scroll);
+
+    let menuHeight = $('#menu').outerHeight();
+
+    
+
+    $('.nav-link').click(function() {    
+        let divId = $(this).attr('href');
+        let offset = $(divId).offset().top - menuHeight >= origOffsetY ? menuHeight : 0;
+         $('html, body').animate({
+          scrollTop: $(divId).offset().top - offset
+        }, 250);
+    });
+
+    $("#burger-form").submit(function() {
+        $(this).find(":input").filter(function() {
+            return !this.value;
+        }).attr("disabled", true);
+    
+        return true;
+    });
+
+    $('#order-button').click(function(e){
+        e.preventDefault();
         $.ajax({
             url: jsonPath,
             dataType: 'json',
-            beforeSend: () => alert('Your order is ready to be sent...'),
+            beforeSend: () => {
+                alert('Your order is ready to be sent...');
+            },
             success: data => alert(data.order.message),
-            complete: () => alert('It\'s ready!'),  
+            complete: () => {
+                alert('It\'s ready!');
+                $('#burger-form').submit();
+            },  
             error: () => alert('Cannot access the server, try again later.')
         });
     });
@@ -205,11 +245,3 @@ function setupStartBurger() {
     addIngredientToLayer(cheese.buildIngredient(true));
     addIngredientToLayer(lettuce.buildIngredient(true));
 }
-
-$("#burger-form").submit(function() {
-    $(this).find(":input").filter(function() {
-        return !this.value;
-    }).attr("disabled", true);
-
-    return true;
-});

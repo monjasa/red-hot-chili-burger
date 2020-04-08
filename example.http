@@ -1,0 +1,8 @@
+POST https://my-json-server.typicode.com/Monjasa/fake-json-server/db HTTP/1.1
+content-type: application/json
+
+{
+    "profile": {
+        "name": "sample"
+    }
+}

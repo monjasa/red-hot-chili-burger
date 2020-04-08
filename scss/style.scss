@@ -32,12 +32,21 @@ body {
     
 }
 
-nav {
-    background-color: $dark-gray;
-    background-image: url('../assets/img/img-pattern-black.png');
+.fixed-top {
+    border-radius: 0 !important;
+}
 
-    .navbar-dark {
-        color: $yellow;
+.navbar-wrapper {
+    background-color: $yellow;
+
+    #menu {
+        background-color: $dark-gray;
+    }
+
+    .logo-image {
+        display: block;
+        margin: 1em auto 0 auto;
+        width: 15rem;
     }
 }
 
@@ -65,9 +74,12 @@ nav {
 
 
 #order {
+    padding: 2.5rem 0;
+
     .order-title {
         color: $white;
         background-color: rgba(0, 0, 0, 0.35);
+        margin-bottom: 2.5rem;
     }
 
     .table {
@@ -204,7 +216,7 @@ nav {
         align-items: center;
         text-align: center;
         vertical-align: middle;
-        background-color: rgba(0, 0, 0, 0.80);
+        background-color: rgba(0, 0, 0, 0.60);
         height: 5rem;
         margin-bottom: 2.5rem;
     }
@@ -245,6 +257,12 @@ footer {
 @include media-breakpoint-up(md) {
     .footer-copyright {
         font-size: 0.95 * $font-size-base !important   ;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    #menu {
+        border-radius: 0.75em;
     }
 }
 
