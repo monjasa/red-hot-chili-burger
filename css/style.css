@@ -7217,13 +7217,17 @@ body {
 .fixed-top {
   border-radius: 0 !important; }
 
+.placeholder-container {
+  background-color: #c5921a; }
+
 .navbar-wrapper {
   background-color: #c5921a; }
   .navbar-wrapper #menu {
-    background-color: #231f20; }
+    background-color: #231f20;
+    transition: top 0.5s ease; }
   .navbar-wrapper .logo-image {
     display: block;
-    margin: 1em auto 0 auto;
+    margin: 1em auto;
     width: 10em; }
 
 .row {
@@ -7365,6 +7369,9 @@ footer .footer-copyright {
   align-items: center;
   color: #fdfdd8; }
 
+.navbar-hide {
+  top: -8.5rem; }
+
 @media (min-width: 768px) {
   .footer-copyright {
     font-size: 1.14rem !important; } }
@@ -7372,6 +7379,28 @@ footer .footer-copyright {
 @media (min-width: 992px) {
   #menu {
     border-radius: 0.75em; } }
+
+@media (max-width: 991.98px) {
+  .navbar-wrapper {
+    background-color: #c5921a; }
+    .navbar-wrapper #menu {
+      font-size: 1.44rem;
+      background-color: #c5921a; }
+      .navbar-wrapper #menu .navbar-brand {
+        width: 50%;
+        height: 7.5rem;
+        margin-left: 25%;
+        background-image: url("../assets/img/logo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain; }
+      .navbar-wrapper #menu ul a {
+        border-top: 1px solid rgba(0, 0, 0, 0.5);
+        text-align: center; }
+    .navbar-wrapper .logo-image {
+      visibility: hidden;
+      height: 0;
+      margin: 0; } }
 
 @media (max-width: 767.98px) {
   .card {

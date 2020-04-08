@@ -7,7 +7,8 @@ const lettuceUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjas
 const onionUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/onion.png';
 const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/tomato.png';
 
-const jsonPath = 'https://my-json-server.typicode.com/Monjasa/fake-json-server/db';
+const navbarLogoUrl = 'https://premiumdevelopment.co/wp-content/uploads/2019/11/floop1.png';
+const jsonUrl = 'https://my-json-server.typicode.com/Monjasa/fake-json-server/db';
 
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
@@ -15,8 +16,16 @@ const bottomBun = getLayerFromUrl(bottomBunUrl, false);
 function adjustPositioning() {
     if ($(window).outerWidth() >= 992) {
         $('footer').find('.row:eq(1)').append($('.social-networks'));
+        $('.navbar-brand').html('Red Hot Chili Burger');
+        $('#menu').addClass('navbar-dark');    
     } else {
         $('footer').find('.row:eq(0)').append($('.social-networks'));
+        $('#menu').addClass('navbar-light');
+
+        // let img = $('<img>');
+        // img.attr('src', navbarLogoUrl);
+        // img.attr('height', '60px');
+        // img.appendTo('.navbar-brand');
     }
 
     $(document).scroll();
@@ -101,13 +110,28 @@ $(document).ready(function() {
     let origOffsetY = menu.offset().top;
 
     function scroll() {
-        if ($(window).scrollTop() >= origOffsetY) {
-            $(menu).addClass('fixed-top');
-            $('.content').css('margin-top', menuHeight);
+
+        let offset = 0;
+        
+        if ($(window).outerWidth() >= 992) {
+            offset = origOffsetY;
         } else {
-            $(menu).removeClass('fixed-top');
-            $('.content').css('margin-top', 0);
+            offset = menuHeight;
+            $(menu)[$(window).scrollTop() >= offset ? 'addClass' : 'removeClass']('navbar-hide');
+            // $('.navbar-collapse').collapse('hide');
         }
+
+        $(menu)[$(window).scrollTop() >= origOffsetY ? 'addClass' : 'removeClass']('fixed-top');
+
+        if ($(window).scrollTop() >= origOffsetY) {
+            // $('.content').css('margin-top', menuHeight);
+            $('.placeholder-container').css('height', menuHeight);
+        } else {
+            // $('.content').css('margin-top', 0);
+            $('.placeholder-container').css('height', 0);
+        }
+
+
     }
     
     $(document).scroll(scroll);
@@ -120,7 +144,7 @@ $(document).ready(function() {
         let divId = $(this).attr('href');
         let offset = $(divId).offset().top - menuHeight >= origOffsetY ? menuHeight : 0;
          $('html, body').animate({
-          scrollTop: $(divId).offset().top - offset
+          scrollTop: $(divId).offset().top
         }, 500);
     });
 
@@ -135,7 +159,7 @@ $(document).ready(function() {
     $('#order-button').click(function(e){
         e.preventDefault();
         $.ajax({
-            url: jsonPath,
+            url: jsonUrl,
             dataType: 'json',
             beforeSend: () => {
                 alert('Your order is ready to be sent...');

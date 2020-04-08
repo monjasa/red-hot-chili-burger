@@ -35,16 +35,21 @@ body {
     border-radius: 0 !important;
 }
 
+.placeholder-container {
+    background-color: $yellow;
+}
+
 .navbar-wrapper {
     background-color: $yellow;
-    
+
     #menu {
         background-color: $dark-gray;
+        transition: top 0.5s ease;
     }
 
     .logo-image {
         display: block;
-        margin: 1em auto 0 auto;
+        margin: 1em auto;
         width: 10em;
     }
 }
@@ -253,6 +258,10 @@ footer {
     }
 }
 
+.navbar-hide {
+    top: -8.5rem;
+}
+
 @include media-breakpoint-up(md) {
     .footer-copyright {
         font-size: 0.95 * $font-size-base !important   ;
@@ -262,6 +271,40 @@ footer {
 @include media-breakpoint-up(lg) {
     #menu {
         border-radius: 0.75em;
+    }
+}
+
+@include media-breakpoint-between(xs, md){
+    .navbar-wrapper {
+        background-color: $yellow;
+    
+        #menu {
+            font-size: 1.2 * $font-size-base;
+            background-color: $yellow;
+
+            .navbar-brand {
+                width: 50%;
+                height: 7.5rem;
+                margin-left: 25%;
+
+                background-image: url('../assets/img/logo.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+            }
+
+            ul a {
+                border-top: 1px solid rgba(0, 0, 0, 0.50);
+                text-align: center;
+            }
+
+        }
+    
+        .logo-image {
+            visibility: hidden;
+            height: 0;
+            margin: 0;
+        }
     }
 }
 
