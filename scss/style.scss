@@ -29,7 +29,6 @@ $font-size-base: 1.2rem;
 body {
     background-color: $dark-gray;
     background-image: url('../assets/img/img-pattern-black.png');
-    
 }
 
 .fixed-top {
@@ -38,7 +37,7 @@ body {
 
 .navbar-wrapper {
     background-color: $yellow;
-
+    
     #menu {
         background-color: $dark-gray;
     }
@@ -46,7 +45,7 @@ body {
     .logo-image {
         display: block;
         margin: 1em auto 0 auto;
-        width: 15rem;
+        width: 10em;
     }
 }
 

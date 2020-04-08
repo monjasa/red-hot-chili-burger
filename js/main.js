@@ -96,29 +96,32 @@ $(document).ready(function() {
 
     $(window).on('resize', adjustPositioning);
 
-    var menu = $('#menu');
-    var origOffsetY = menu.offset().top;
+    let menu = $('#menu');
+    let menuHeight = $('#menu').outerHeight();
+    let origOffsetY = menu.offset().top;
 
     function scroll() {
         if ($(window).scrollTop() >= origOffsetY) {
             $(menu).addClass('fixed-top');
+            $('.content').css('margin-top', menuHeight);
         } else {
             $(menu).removeClass('fixed-top');
+            $('.content').css('margin-top', 0);
         }
     }
     
     $(document).scroll(scroll);
 
-    let menuHeight = $('#menu').outerHeight();
-
-    
+    $('.navbar-nav>li>a').on('click', function(){
+        $('.navbar-collapse').collapse('hide');
+    });
 
     $('.nav-link').click(function() {    
         let divId = $(this).attr('href');
         let offset = $(divId).offset().top - menuHeight >= origOffsetY ? menuHeight : 0;
          $('html, body').animate({
           scrollTop: $(divId).offset().top - offset
-        }, 250);
+        }, 500);
     });
 
     $("#burger-form").submit(function() {

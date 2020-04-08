@@ -39,156 +39,158 @@
             </div>
         </div>
 
-        <div id="about-us" class="container-fluid d-flex align-items-center">
-            <div class="about-us-title py-4">
-                <h2><strong>Who we are?</strong></h2>
-                <span>The enthusiasts passionate about bringing flavoursome homemade-like burgers and catering to you!</span>
+        <div class="content">
+            <div id="about-us" class="container-fluid d-flex align-items-center">
+                <div class="about-us-title py-4">
+                    <h2><strong>Who we are?</strong></h2>
+                    <span>The enthusiasts passionate about bringing flavoursome homemade-like burgers and catering to you!</span>
+                </div>
             </div>
-        </div>
-
-        <div id="order" class="container-fluid">
-            <div class="order-title container-fluid text-center py-3">
-                <h2><strong>Meet your Burger</strong></h2>
-            </div>
-            <form id="burger-form" method="GET">
-                <div class="row mt-2 mt-md-1">
-                    <div class="col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-0 col-lg-6 offset-lg-1">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Layer</th>
-                                        <th colspan="3">Count</th>
-                                        <th>Piece price</th>
-                                        <th>Price</th>
-                                    </tr>    
-                                </thead>
-                                <tbody>
-                                    <tr id="patty-table-row">
-                                        <td>Patties</td>
-                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                        <td>
-                                            <input type="text" name="patties" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
-                                        </td>
-                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                        <td class="piece-price"></td>
-                                        <td class="layer-price"></td>
-                                    </tr>
-                                    <tr id="cheese-table-row">
-                                        <td>Cheese</td>
-                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                        <td>
-                                            <input type="text" name="cheese" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
-                                        </td>
-                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                        <td class="piece-price"></td>
-                                        <td class="layer-price"></td>
-                                    </tr>
-                                    <tr id="lettuce-table-row">
-                                        <td>Lettuce</td>
-                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                        <td>
-                                            <input type="text" name="lettuce" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
-                                        </td>
-                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                        <td class="piece-price"></td>
-                                        <td class="layer-price"></td>
-                                    </tr>
-                                    <tr id="onion-table-row">
-                                        <td>Onion</td>
-                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                        <td>
-                                            <input type="text" name="onion" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
-                                        </td>
-                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                        <td class="piece-price"></td>
-                                        <td class="layer-price"></td>
-                                    </tr>
-                                    <tr id="tomato-table-row">
-                                        <td>Tomato</td> 
-                                        <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
-                                        <td>
-                                            <input type="text" name="tomato" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
-                                        </td>
-                                        <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
-                                        <td class="piece-price"></td>
-                                        <td class="layer-price"></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="5" style="text-align: right;">Total:</td>
-                                        <td id="total-price"></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                
-                        <div class="container-fluid text-center">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <label class="btn btn-secondary">
-                                            <input type="radio" id="classic" name="sauce" value="classic"/> Classic
-                                        </label>
-                                        <label class="btn btn-secondary">
-                                            <input type="radio" id="garlic" name="sauce" value="garlic"/> Garlic
-                                        </label>
-                                        <label class="btn btn-secondary">
-                                            <input type="radio" id="ranch" name="sauce" value="ranch"/> Ranch
-                                        </label>
+    
+            <div id="order" class="container-fluid">
+                <div class="order-title container-fluid text-center py-3">
+                    <h2><strong>Meet your Burger</strong></h2>
+                </div>
+                <form id="burger-form" method="GET">
+                    <div class="row mt-2 mt-md-1">
+                        <div class="col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-0 col-lg-6 offset-lg-1">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Layer</th>
+                                            <th colspan="3">Count</th>
+                                            <th>Piece price</th>
+                                            <th>Price</th>
+                                        </tr>    
+                                    </thead>
+                                    <tbody>
+                                        <tr id="patty-table-row">
+                                            <td>Patties</td>
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="patties" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                        <tr id="cheese-table-row">
+                                            <td>Cheese</td>
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="cheese" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                        <tr id="lettuce-table-row">
+                                            <td>Lettuce</td>
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="lettuce" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                        <tr id="onion-table-row">
+                                            <td>Onion</td>
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="onion" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                        <tr id="tomato-table-row">
+                                            <td>Tomato</td> 
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="tomato" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5" style="text-align: right;">Total:</td>
+                                            <td id="total-price"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                    
+                            <div class="container-fluid text-center">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-secondary">
+                                                <input type="radio" id="classic" name="sauce" value="classic"/> Classic
+                                            </label>
+                                            <label class="btn btn-secondary">
+                                                <input type="radio" id="garlic" name="sauce" value="garlic"/> Garlic
+                                            </label>
+                                            <label class="btn btn-secondary">
+                                                <input type="radio" id="ranch" name="sauce" value="ranch"/> Ranch
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
+                                <br/>
                             </div>
-                            <br/>
+                        </div>
+    
+                        <div class="burger-by-layers col-sm-12 col-md-3 offset-md-1 col-lg-3 offset-lg-1 mt-2 mt-md-0">
+                            <div class="container-fluid layers-title">
+                                <h5><strong>It will look like...</strong></h5>
+                            </div>
+                            <div class="container layers">
+                                <div id="lettuce-layer" class="layer"></div>
+                                <div id="onion-layer" class="layer"></div>
+                                <div id="tomato-layer" class="layer"></div>
+                                <div id="cheese-layer" class="layer"></div>
+                                <div id="patty-layer" class="layer"></div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="burger-by-layers col-sm-12 col-md-3 offset-md-1 col-lg-3 offset-lg-1 mt-2 mt-md-0">
-                        <div class="container-fluid layers-title">
-                            <h5><strong>It will look like...</strong></h5>
-                        </div>
-                        <div class="container layers">
-                            <div id="lettuce-layer" class="layer"></div>
-                            <div id="onion-layer" class="layer"></div>
-                            <div id="tomato-layer" class="layer"></div>
-                            <div id="cheese-layer" class="layer"></div>
-                            <div id="patty-layer" class="layer"></div>
+                    
+                    <div class="row my-3 mb-md-5">
+                        <div class="col-12 text-center">
+                            <input type="submit" id="order-button" class="btn btn-primary btn-lg" value="Order me!">
                         </div>
                     </div>
-                </div>
-                
-                <div class="row my-3 mb-md-5">
-                    <div class="col-12 text-center">
-                        <input type="submit" id="order-button" class="btn btn-primary btn-lg" value="Order me!">
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div id="locations" class="container-fluid">
-            <div class="container-fluid locations-title">
-                <h2><strong>Locations</strong></h2>
+                </form>
             </div>
-
-            <div class="locations-cards d-flex flex-md-row flex-wrap flex-column justify-content-around align-items-center">
-                <div class="card text-center">
-                    <h4><strong>Downtown</strong></h4>
-                    <p>384 West 4th St</p>
-                    <p>Suite 108</p>
-                    <p>Portland, Maine</p>
+    
+            <div id="locations" class="container-fluid">
+                <div class="container-fluid locations-title">
+                    <h2><strong>Locations</strong></h2>
                 </div>
-                <div class="card text-center">
-                    <h4><strong>East Bayside</strong></h4>
-                    <p>3433 Phismerman's Avenue</p>
-                    <p>(Northwest Corner)</p>
-                    <p>Portland, Maine</p>
-                </div>
-                <div class="card text-center">
-                    <h4><strong>Oakdale</strong></h4>
-                    <p>515 Crescent Avenue</p>
-                    <p>Second Floor</p>
-                    <p>Portland, Maine</p>
+    
+                <div class="locations-cards d-flex flex-md-row flex-wrap flex-column justify-content-around align-items-center">
+                    <div class="card text-center">
+                        <h4><strong>Downtown</strong></h4>
+                        <p>384 West 4th St</p>
+                        <p>Suite 108</p>
+                        <p>Portland, Maine</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4><strong>East Bayside</strong></h4>
+                        <p>3433 Phismerman's Avenue</p>
+                        <p>(Northwest Corner)</p>
+                        <p>Portland, Maine</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4><strong>Oakdale</strong></h4>
+                        <p>515 Crescent Avenue</p>
+                        <p>Second Floor</p>
+                        <p>Portland, Maine</p>
+                    </div>
                 </div>
             </div>
         </div>
