@@ -109,6 +109,8 @@ $(document).ready(function() {
     let menuHeight = $('#menu').outerHeight();
     let origOffsetY = menu.offset().top;
 
+    let previousScroll = menuHeight;
+
     function scroll() {
 
         let offset = 0;
@@ -118,20 +120,15 @@ $(document).ready(function() {
         } else {
             offset = menuHeight;
             $(menu)[$(window).scrollTop() >= offset ? 'addClass' : 'removeClass']('navbar-hide');
-            // $('.navbar-collapse').collapse('hide');
+            $('.navbar-collapse').collapse('hide');
         }
+
+        let currentScroll = $(window).scrollTop();
+        if (previousScroll > currentScroll) $(menu).removeClass('navbar-hide');
+        previousScroll = currentScroll;
 
         $(menu)[$(window).scrollTop() >= origOffsetY ? 'addClass' : 'removeClass']('fixed-top');
-
-        if ($(window).scrollTop() >= origOffsetY) {
-            // $('.content').css('margin-top', menuHeight);
-            $('.placeholder-container').css('height', menuHeight);
-        } else {
-            // $('.content').css('margin-top', 0);
-            $('.placeholder-container').css('height', 0);
-        }
-
-
+        $('.placeholder-container').css('height', [$(window).scrollTop() >= origOffsetY ? menuHeight : 0]);
     }
     
     $(document).scroll(scroll);

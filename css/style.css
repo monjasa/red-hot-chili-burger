@@ -7224,7 +7224,7 @@ body {
   background-color: #c5921a; }
   .navbar-wrapper #menu {
     background-color: #231f20;
-    transition: top 0.5s ease; }
+    transition: top 0.5s ease-out; }
   .navbar-wrapper .logo-image {
     display: block;
     margin: 1em auto;
@@ -7384,19 +7384,21 @@ footer .footer-copyright {
   .navbar-wrapper {
     background-color: #c5921a; }
     .navbar-wrapper #menu {
-      font-size: 1.44rem;
-      background-color: #c5921a; }
+      background-color: #c5921a;
+      box-shadow: 0 2px 5px #424041; }
       .navbar-wrapper #menu .navbar-brand {
         width: 50%;
-        height: 7.5rem;
+        height: 6rem;
         margin-left: 25%;
         background-image: url("../assets/img/logo.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain; }
-      .navbar-wrapper #menu ul a {
-        border-top: 1px solid rgba(0, 0, 0, 0.5);
-        text-align: center; }
+      .navbar-wrapper #menu ul {
+        margin-top: 0.75em; }
+        .navbar-wrapper #menu ul a {
+          border-top: 1px solid rgba(0, 0, 0, 0.5);
+          text-align: center; }
     .navbar-wrapper .logo-image {
       visibility: hidden;
       height: 0;

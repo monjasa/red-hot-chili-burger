@@ -44,7 +44,7 @@ body {
 
     #menu {
         background-color: $dark-gray;
-        transition: top 0.5s ease;
+        transition: top 0.5s ease-out;
     }
 
     .logo-image {
@@ -279,12 +279,12 @@ footer {
         background-color: $yellow;
     
         #menu {
-            font-size: 1.2 * $font-size-base;
             background-color: $yellow;
+            box-shadow: 0 2px 5px #424041;
 
             .navbar-brand {
                 width: 50%;
-                height: 7.5rem;
+                height: 6rem;
                 margin-left: 25%;
 
                 background-image: url('../assets/img/logo.png');
@@ -293,9 +293,13 @@ footer {
                 background-size: contain;
             }
 
-            ul a {
-                border-top: 1px solid rgba(0, 0, 0, 0.50);
-                text-align: center;
+            ul {
+                margin-top: 0.75em;
+
+                a {
+                    border-top: 1px solid rgba(0, 0, 0, 0.50);
+                    text-align: center;
+                }
             }
 
         }
