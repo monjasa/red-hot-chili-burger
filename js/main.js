@@ -7,26 +7,26 @@ const lettuceUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjas
 const onionUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/onion.png';
 const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/tomato.png';
 
-const navbarLogoUrl = 'https://premiumdevelopment.co/wp-content/uploads/2019/11/floop1.png';
 const jsonUrl = 'https://my-json-server.typicode.com/Monjasa/fake-json-server/db';
 
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
 
+let origOffsetY = $('#menu').offset().top;
+
 function adjustPositioning() {
+
     if ($(window).outerWidth() >= 992) {
         $('footer').find('.row:eq(1)').append($('.social-networks'));
         $('.navbar-brand').html('Red Hot Chili Burger');
-        $('#menu').addClass('navbar-dark');    
+        $('#menu').removeClass('navbar-light').addClass('navbar-dark');    
     } else {
         $('footer').find('.row:eq(0)').append($('.social-networks'));
-        $('#menu').addClass('navbar-light');
-
-        // let img = $('<img>');
-        // img.attr('src', navbarLogoUrl);
-        // img.attr('height', '60px');
-        // img.appendTo('.navbar-brand');
+        $('.navbar-brand').html('');
+        $('#menu').removeClass('navbar-dark').addClass('navbar-light');
     }
+
+    origOffsetY = $('#menu').offset().top;
 
     $(document).scroll();
 }
@@ -106,14 +106,14 @@ $(document).ready(function() {
     $(window).on('resize', adjustPositioning);
 
     let menu = $('#menu');
-    let menuHeight = $('#menu').outerHeight();
-    let origOffsetY = menu.offset().top;
-
-    let previousScroll = menuHeight;
+    let previousScroll = menu.outerHeight();
 
     function scroll() {
-
+        
+        let menuHeight = menu.outerHeight();
         let offset = 0;
+
+        console.log(origOffsetY)
         
         if ($(window).outerWidth() >= 992) {
             offset = origOffsetY;
@@ -133,16 +133,21 @@ $(document).ready(function() {
     
     $(document).scroll(scroll);
 
-    $('.navbar-nav>li>a').on('click', function(){
+    $('.navbar-nav>li>a').click(function(){
         $('.navbar-collapse').collapse('hide');
     });
 
     $('.nav-link').click(function() {    
+        let menuHeight = $('#menu').outerHeight();
+
         let divId = $(this).attr('href');
         let offset = $(divId).offset().top - menuHeight >= origOffsetY ? menuHeight : 0;
-         $('html, body').animate({
+
+        $('html, body').animate({
           scrollTop: $(divId).offset().top
         }, 500);
+
+        setTimeout(() => $('#menu').addClass('navbar-hide'), 525);
     });
 
     $("#burger-form").submit(function() {

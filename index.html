@@ -25,7 +25,7 @@
 
                 <div class="col-12 mb-lg-4 px-0">
                     <nav id="menu" class="navbar navbar-expand-lg" role="navigation">
-                        <a class="navbar-brand" href="#"></a>
+                        <a class="navbar-brand"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -58,8 +58,30 @@
                 <form id="burger-form" method="GET">
                     <div class="row mt-2 mt-md-1">
                         <div class="col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-0 col-lg-6 offset-lg-1">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
+                            <div class="burger-types container-fluid d-flex flex-column align-items-start flex-sm-row justify-content-sm-center justify-content-lg-start pb-2">
+                                <div class="burger-type-div d-flex justify-content-center ml-md-3">
+                                    <div class="burger-type-toggle mr-3 mb-2 mb-sm-0">
+                                        <input type="checkbox" id="vegetarian" name="vegetarian"/>
+                                    </div>
+                                    <span>Vegetarian</span>
+                                    <div class="vegetarian-icon ml-2">
+                                        <img src="assets/img/leaf.png" alt="leaf" draggable="false"/>
+                                    </div>
+                                </div>
+
+                                <div class="burger-type-div d-flex justify-content-center ml-md-5">
+                                    <div class="burger-type-toggle mr-3">
+                                        <input type="checkbox" id="spicy" name="spicy"/>
+                                    </div>
+                                    <span>Spicy</span>
+                                    <div class="vegetarian-icon ml-2">
+                                        <img src="assets/img/pepper.png" alt="pepper" draggable="false"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row table-responsive">
+                                <table class="col-12 table table-hover">
                                     <thead>
                                         <tr>
                                             <th>Layer</th>
@@ -128,24 +150,22 @@
                                     </tfoot>
                                 </table>
                             </div>
-                    
-                            <div class="container-fluid text-center">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                            <label class="btn btn-secondary">
-                                                <input type="radio" id="classic" name="sauce" value="classic"/> Classic
-                                            </label>
-                                            <label class="btn btn-secondary">
-                                                <input type="radio" id="garlic" name="sauce" value="garlic"/> Garlic
-                                            </label>
-                                            <label class="btn btn-secondary">
-                                                <input type="radio" id="ranch" name="sauce" value="ranch"/> Ranch
-                                            </label>
-                                        </div>
+
+                            <div class="row mb-3">
+                                <div class="sauce-types col-12 d-flex justify-content-around flex-wrap py-2">
+                                    <div class="sauce-div">
+                                        <input type="radio" id="classic" name="sauce" value="classic"/>
+                                        <label for="classic">Classic</label>
+                                    </div>
+                                    <div class="sauce-div">
+                                        <input type="radio" id="garlic" name="sauce" value="garlic"/>
+                                        <label for="garlic">Garlic</label>
+                                    </div>
+                                    <div class="sauce-div">
+                                        <input type="radio" id="ranch" name="sauce" value="ranch"/>
+                                        <label for="ranch">Ranch</label>
                                     </div>
                                 </div>
-                                <br/>
                             </div>
                         </div>
     
@@ -163,9 +183,17 @@
                         </div>
                     </div>
                     
-                    <div class="row my-3 mb-md-5">
+                    <div class="row mb-3">
                         <div class="col-12 text-center">
                             <input type="submit" id="order-button" class="btn btn-primary btn-lg" value="Order me!">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="coupon-field col-12 container-fluid text-center">
+                            <span>Have a Coupon?</span>
+                            <span class="ml-3"><strong>#</strong></span>
+                            <input type="text" id="coupon" class="px-4" name="coupon" maxlength="6" size="6"/>
                         </div>
                     </div>
                 </form>
