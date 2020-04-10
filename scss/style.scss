@@ -41,7 +41,6 @@ body {
 
 .placeholder-container {
     background-color: $yellow;
-    // background-color: red;
 }
 
 .navbar-wrapper {
@@ -49,7 +48,11 @@ body {
 
     #menu {
         background-color: $dark-gray;
-        transition: top 0.50s ease-out, box-shadow 0.50s ease-in-out;
+        box-shadow: 2px 5px 7px rgba(0, 0, 0, 0.30);
+        
+        a {
+            transition: color 0.25s ease;
+        }
     }
 
     .logo-image {
@@ -81,11 +84,11 @@ body {
     }
 }
 
-
 #order {
     padding: 2.5rem 0;
 
     .row {
+        padding-left: 5px;
         padding-right: 5px;
     }
 
@@ -417,7 +420,8 @@ footer {
         #menu {
             background-color: $yellow;
             box-shadow: $element-shadow;
-
+            transition: top 0.50s ease-out, box-shadow 0.50s ease-in-out;
+            
             .navbar-brand {
                 width: 50%;
                 height: 6rem;

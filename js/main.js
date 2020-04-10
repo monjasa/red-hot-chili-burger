@@ -8,11 +8,18 @@ const onionUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/
 const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/tomato.png';
 
 const jsonUrl = 'https://my-json-server.typicode.com/Monjasa/fake-json-server/db';
+const navbarLogoUrl = 'https://i.imgur.com/T45chV1.png';
 
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
 
+let navbarLogo = document.createElement('img');
 let origOffsetY = $('#menu').offset().top;
+
+let scrollorama = $.scrollorama({
+    blocks: '.scrollblock',
+    enablePin: false
+});
 
 function adjustPositioning() {
 
@@ -20,13 +27,16 @@ function adjustPositioning() {
         $('footer').find('.row:eq(1)').append($('.social-networks'));
         $('.navbar-brand').html('Red Hot Chili Burger');
         $('#menu').removeClass('navbar-light').addClass('navbar-dark');    
+        origOffsetY = $('#logo-container').height();
+        
     } else {
         $('footer').find('.row:eq(0)').append($('.social-networks'));
         $('.navbar-brand').html('');
         $('#menu').removeClass('navbar-dark').addClass('navbar-light');
+        origOffsetY = 0;
     }
 
-    origOffsetY = $('#menu').offset().top;
+    scrollorama.settings.offset = -$('#menu').outerHeight() - 5;
 
     $(document).scroll();
 }
@@ -105,7 +115,24 @@ class Ingredient {
 let patty, cheese, lettuce, onion, tomato;
 const ingredients = new Map();
 
-$(document).ready(function() {
+$(document).ready(function() { 
+
+    scrollorama.onBlockChange(function() {
+        $('.nav-item a').removeClass('active');
+        $(blocks[`block#${scrollorama.blockIndex}`]).addClass('active');
+    });
+
+    let blocks = {
+        'block#1': $('a[href="#about-us"]'),
+        'block#2': $('a[href="#order"]'),
+        'block#3': $('a[href="#locations"]')
+    }
+
+    $(navbarLogo).attr('src', navbarLogoUrl).height(40).width(40);
+    $(navbarLogo).on('dragstart', e => false);
+    $(navbarLogo).addClass('d-inline-block').addClass('align-top');
+    $(navbarLogo).css('margin-right', '0.5em');
+    $(navbarLogo).prop('alt', 'Navbar Logo');
 
     $(window).on('resize', adjustPositioning);
 
@@ -113,23 +140,25 @@ $(document).ready(function() {
     let previousScroll = menu.outerHeight();
 
     function scroll() {
-        
         let menuHeight = menu.outerHeight();
-        let offset = 0;
-
-        console.log(origOffsetY)
         
-        if ($(window).outerWidth() >= 992) {
-            offset = origOffsetY;
-        } else {
-            offset = menuHeight;
-            $(menu)[$(window).scrollTop() >= offset ? 'addClass' : 'removeClass']('navbar-hide');
+        if ($(window).outerWidth() < 992) {
+            $(menu)[$(window).scrollTop() >= menuHeight ? 'addClass' : 'removeClass']('navbar-hide');
             $('.navbar-collapse').collapse('hide');
         }
 
         let currentScroll = $(window).scrollTop();
         if (previousScroll > currentScroll) $(menu).removeClass('navbar-hide');
         previousScroll = currentScroll;
+
+        if ($(window).outerWidth() >= 992) {
+            if ($(window).scrollTop() >= origOffsetY) {
+                $('.navbar-brand').prepend(navbarLogo);
+            } else {
+                $('.nav-item a').removeClass('active');
+                navbarLogo.remove();
+            }
+        }
 
         $(menu)[$(window).scrollTop() >= origOffsetY ? 'addClass' : 'removeClass']('fixed-top');
         $('.placeholder-container').css('height', [$(window).scrollTop() >= origOffsetY ? menuHeight : 0]);
@@ -145,13 +174,13 @@ $(document).ready(function() {
         let menuHeight = $('#menu').outerHeight();
 
         let divId = $(this).attr('href');
-        let offset = $(divId).offset().top - menuHeight >= origOffsetY ? menuHeight : 0;
+        let offset = $(window).outerWidth() >= 992 ? menuHeight : 0;
 
         $('html, body').animate({
-          scrollTop: $(divId).offset().top
+          scrollTop: $(divId).offset().top - offset
         }, 500);
 
-        setTimeout(() => $('#menu').addClass('navbar-hide'), 525);
+        if ($(window).outerWidth() < 992) setTimeout(() => $('#menu').addClass('navbar-hide'), 525);
     });
 
     $("#burger-form").submit(function() {

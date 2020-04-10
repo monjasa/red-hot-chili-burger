@@ -17,22 +17,24 @@
 
         </div>
         
-        <div class="navbar-wrapper">
+        <div class="navbar-wrapper scrollblock">
             <div class="row container-fluid px-0 px-lg-5">
-                <div class="col-12">
+                <div id="logo-container" class="col-12">
                     <img class="logo-image" src="assets/img/logo.png" alt="logo" draggable="false"/>
                 </div>
 
                 <div class="col-12 mb-lg-4 px-0">
                     <nav id="menu" class="navbar navbar-expand-lg" role="navigation">
-                        <a class="navbar-brand"></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <a class="navbar-brand">
+                            Red Hot Chili Burger
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
             
-                        <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="collapse navbar-collapse" id="main-navbar">
                             <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link" href="#about-us">About us <span class="sr-only">(current)</span></a></li>
+                                <li class="nav-item"><a class="nav-link active" href="#about-us">About us <span class="sr-only">(current)</span></a></li>
                                 <li class="nav-item"><a class="nav-link" href="#order">Make an order</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#locations">Locations</a></li>
                             </ul>
@@ -44,22 +46,22 @@
         </div>
 
         <div class="content">
-            <div id="about-us" class="container-fluid d-flex align-items-center">
+            <div id="about-us" class="container-fluid d-flex align-items-center scrollblock">
                 <div class="about-us-title py-4">
                     <h2><strong>Who we are?</strong></h2>
                     <span>The enthusiasts passionate about bringing flavoursome homemade-like burgers and catering to you!</span>
                 </div>
             </div>
     
-            <div id="order" class="container-fluid">
+            <div id="order" class="container-fluid scrollblock">
                 <div class="order-title container-fluid text-center py-3">
                     <h2><strong>Meet your Burger</strong></h2>
                 </div>
                 <form id="burger-form" method="GET">
                     <div class="row mt-2 mt-md-1">
                         <div class="col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-0 col-lg-6 offset-lg-1">
-                            <div class="burger-types container-fluid d-flex flex-column align-items-start flex-sm-row justify-content-sm-center justify-content-lg-start pb-2">
-                                <div class="burger-type-div d-flex justify-content-center ml-md-3">
+                            <div class="burger-types container-fluid d-flex flex-column align-items-start flex-sm-row pb-2">
+                                <div class="burger-type-div d-flex justify-content-center ml-sm-3">
                                     <div class="burger-type-toggle mr-3 mb-2 mb-sm-0">
                                         <input type="checkbox" id="vegetarian" name="vegetarian"/>
                                     </div>
@@ -69,7 +71,7 @@
                                     </div>
                                 </div>
 
-                                <div class="burger-type-div d-flex justify-content-center ml-md-5">
+                                <div class="burger-type-div d-flex justify-content-center ml-sm-5">
                                     <div class="burger-type-toggle mr-3">
                                         <input type="checkbox" id="spicy" name="spicy"/>
                                     </div>
@@ -199,7 +201,7 @@
                 </form>
             </div>
     
-            <div id="locations" class="container-fluid">
+            <div id="locations" class="container-fluid scrollblock">
                 <div class="container-fluid locations-title">
                     <h2><strong>Locations</strong></h2>
                 </div>
@@ -245,6 +247,7 @@
 
         <script src="js/jquery.min.js"></script>
         <script src="js/tether.min.js"></script>
+        <script src="js/jquery.scrollorama.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/main.js" async></script>
     </body>
