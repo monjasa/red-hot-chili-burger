@@ -1,218 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en">
-    <head>
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Red Hot Chili Burger</title>
-        <link rel="stylesheet" href="styles/styles.css">
-
-        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon//apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon//favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon//favicon-16x16.png">
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#c5921a">
-
-        <meta name="msapplication-TileColor" content="#2b5797">
-        <meta name="theme-color" content="#ffffff">
-
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-            }
-        </style>
-
-    </head>
-
-    <body>
-        <div class="content">
-            <div class="header">
-                <img id="logo" src="images/logo.png" alt="logo" draggable="false"/>
-            </div>
-            <div class="main">
-                <div class="info">
-                    <form id="order" action="" target="_blank" method="GET" class="burger-form">
-
-                        <div class="burger-types">
-                            <div id="vegetarian-div" class="burger-type-div">
-                                <div class="burger-toggle">
-                                    <input type="checkbox" id="vegetarian" name="vegetarian"/>
-                                </div>
-                                <span>Vegetarian</span>
-                                <div class="vegetarian-icon">
-                                    <img src="images/leaf.png" class="spicy-pepper" alt="leaf" draggable="false"/>
-                                </div>
-                            </div>
-
-                            <div id="spicy-div" class="burger-type-div">
-                                <div class="burger-toggle">
-                                    <input type="checkbox" id="spicy" name="spicy"/>
-                                </div>
-                                <span>Spicy</span>
-                                <div class="spicy-icon">
-                                    <img src="images/pepper.png" class="spicy-pepper" alt="pepper" draggable="false"/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="price-table-div">
-                            <div class="price-table-row table-header">
-                                <span>Layer</span>
-                                <span>Count</span>
-                                <span>Piece price</span>
-                                <span>Price</span>
-                            </div>
-                            
-                            <div id="patty-table-row" class="price-table-row">
-                                <span class="ingredient-label">Patties</span>
-                                <div class="ingredient-count-div">
-                                    <button type="button" class="lessButton" disabled="true">-</button>
-                                    <span class="ingredient-count">0</span>
-                                    <button type="button" class="moreButton">+</button>
-                                </div>
-                                <span class="piece-price"></span>
-                                <span class="layer-price">-</span>
-                            </div>
-
-                            <div id="cheese-table-row" class="price-table-row">
-                                <span class="ingredient-label">Cheese</span>
-                                <div class="ingredient-count-div">
-                                    <button type="button" class="lessButton" disabled="true">-</button>
-                                    <span class="ingredient-count">0</span>
-                                    <button type="button" class="moreButton">+</button>
-                                </div>
-                                <span class="piece-price"></span>
-                                <span class="layer-price">-</span>
-                            </div>
-
-                            <div id="lettuce-table-row" class="price-table-row">
-                                <span class="ingredient-label">Lettuce</span>
-                                <div class="ingredient-count-div">
-                                    <button type="button" class="lessButton" disabled="true">-</button>
-                                    <span class="ingredient-count">0</span>
-                                    <button type="button" class="moreButton">+</button>
-                                </div>
-                                <span class="piece-price"></span>
-                                <span class="layer-price">-</span>
-                            </div>
-
-                            <div id="onion-table-row" class="price-table-row">
-                                <span class="ingredient-label">Onion</span>
-                                <div class="ingredient-count-div">
-                                    <button type="button" class="lessButton" disabled="true">-</button>
-                                    <span class="ingredient-count">0</span>
-                                    <button type="button" class="moreButton">+</button>
-                                </div>
-                                <span class="piece-price"></span>
-                                <span class="layer-price">-</span>
-                            </div>
-
-                            <div id="tomato-table-row" class="price-table-row">
-                                <span class="ingredient-label">Tomato</span>
-                                <div class="ingredient-count-div">
-                                    <button type="button" class="lessButton" disabled="true">-</button>
-                                    <span class="ingredient-count">0</span>
-                                    <button type="button" class="moreButton">+</button>
-                                </div>
-                                <span class="piece-price"></span>
-                                <span class="layer-price">-</span>
-                            </div>
-
-                            <div class="price-table-row table-footer">
-                                <span class="total-label">Total:</span>
-                                <span class="total-price"></span>
-                            </div>
-                            
-                        </div>
-
-                        <div class="sauce-div">
-                            <div class="sauce-header">
-                                <span>Sauce it!</span>
-                            </div>
-                            <div class="sauces">
-                                <div class="sauce">
-                                    <input type="radio" id="classic" name="sauce" value="classic"/>
-                                    <label for="classic">Classic</label>
-                                </div>
-                                <div class="sauce">
-                                    <input type="radio" id="garlic" name="sauce" value="garlic"/>
-                                    <label for="garlic">Garlic</label>
-                                </div>
-                                <div class="sauce">
-                                    <input type="radio" id="ranch" name="sauce" value="ranch"/>
-                                    <label for="ranch">Ranch</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="custom">
-                            <div class="garnish-div">
-                                <select id="garnish" name="garnish">
-                                    <option value="">Select Garnish:</option>
-                                    <option value="fries">French Fries</option>
-                                    <option value="onion-rings">Onion Rings</option>
-                                    <option value="cheese-platter">Cheese Platter</option>
-                                </select>
-                            </div>
-
-                            <div class="options-div">
-                                <div class="options-checkbox">
-                                    <label for="options" class="label-container">Anything to add?
-                                        <input type="checkbox" id="options"/>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-        
-                            </div>
-
-                            <div class="options-textarea">
-                                <textarea placeholder="Say it right there!" name="options" rows="5" cols="30" spellcheck="false"></textarea>
-                            </div>
-                        </div>
-
-                        <input type="submit" value="Order me!" class="order"/>
-                        <div class="coupon-field">
-                            <span>Have a Coupon?</span>
-                            <span id="hashtag">#</span>
-                            <input type="text" id="coupon" maxlength="6"/>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="burger">
-                    <div class="burger-header">
-                        <div class="vegetarian-icon">
-                            <img src="images/leaf.png" alt="leaf" class="vegetarian-leaf"/>
-                        </div>
-                        <span class="burger-title">Meet your burger</span>
-                        <div class="vegetarian-icon">
-                            <img src="images/leaf.png" alt="leaf" class="vegetarian-leaf"/>
-                        </div>
-                    </div>
-                    
-                    <div class="layers">
-                        <div id="lettuce-layer" class="layer"></div>
-                        <div id="onion-layer" class="layer"></div>
-                        <div id="tomato-layer" class="layer"></div>
-                        <div id="cheese-layer" class="layer"></div>
-                        <div id="patties-layer" class="layer"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="locations">
-                <div class="photo-title">
-                    <h2>Locations</h2>
-                </div>
-
-                <div class="locations-cards flex-block">
-                    <div class="card">
-                        <h3>Downtown</h3>
-=======
 <html class="no-js" lang="en">
     <head>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -433,80 +219,22 @@
                 <div class="locations-cards d-flex flex-md-row flex-wrap flex-column justify-content-around align-items-center">
                     <div class="card text-center">
                         <h4><strong>Downtown</strong></h4>
->>>>>>> other
                         <p>384 West 4th St</p>
                         <p>Suite 108</p>
                         <p>Portland, Maine</p>
                     </div>
-<<<<<<< HEAD
-                    <div class="card">
-                        <h3>East Bayside</h3>
-=======
                     <div class="card text-center">
                         <h4><strong>East Bayside</strong></h4>
->>>>>>> other
                         <p>3433 Phismerman's Avenue</p>
                         <p>(Northwest Corner)</p>
                         <p>Portland, Maine</p>
                     </div>
-<<<<<<< HEAD
-                    <div class="card">
-                        <h3>Oakdale</h3>
-=======
                     <div class="card text-center">
                         <h4><strong>Oakdale</strong></h4>
->>>>>>> other
                         <p>515 Crescent Avenue</p>
                         <p>Second Floor</p>
                         <p>Portland, Maine</p>
                     </div>
-<<<<<<< HEAD
-                    <div class="diagram" style="width: 20rem; height: 10rem; display: none;">
-
-                    </div>
-                    <canvas class="canvas" width="200" height="100" style="display: none;">
-
-                    </canvas>
-                </div>
-            </div>
-            
-            <div class="footer">
-                <div class="location"></div>
-                <div class="social-networks">
-                    <a href="#"><img class="social-button" src="images/social-facebook.png" draggable="false"/></a>
-                    <a href="#"><img class="social-button" src="images/social-instagram.png" draggable="false"/></a>
-                    <a href="#"><img class="social-button" src="images/social-twitter.png" draggable="false"/></a>
-                    <a href="#"><img class="social-button" src="images/social-pinterest.png" draggable="false"/></a>
-                    <a href="#"><img class="social-button" src="images/social-linkedin.png" draggable="false"/></a>
-                </div>
-                <span class="copy-span">&copy; 2016 &mdash; 2020</span>
-            </div>
-        </div>
-
-        <script src="script/script.js" async defer></script>
-
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-            google.load("visualization", "1", {packages:["corechart"]});
-            google.setOnLoadCallback(drawChart);
-            function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Sauce', 'Votes'],
-                ['Classic', 657],
-                ['Garlic', 1024],
-                ['Ranch', 342],
-            ]);
-        
-            var options = {
-                title: 'Best sauce of the week',
-            };
-
-            var chart = new google.visualization.PieChart(document.querySelector('.diagram'));
-            chart.draw(data, options);
-            
-            }
-        </script>
-=======
                 </div>
             </div>
         </div>
@@ -532,6 +260,5 @@
         <script src="js/jquery.scrollorama.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/main.js" async></script>
->>>>>>> other
     </body>
 </html>
