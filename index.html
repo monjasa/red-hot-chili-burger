@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
     <head>
 
@@ -211,22 +212,255 @@
                 <div class="locations-cards flex-block">
                     <div class="card">
                         <h3>Downtown</h3>
+=======
+<html class="no-js" lang="en">
+    <head>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <title>Red Hot Chili Burger</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+        <link rel="manifest" href="/assets/icons/site.webmanifest">
+        <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#c5921a">
+        <link rel="shortcut icon" href="/assets/icons/favicon.ico">
+        <meta name="msapplication-TileColor" content="#231f20">
+        <meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
+        <meta name="theme-color" content="#231f20">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
+        <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <div class="placeholder-container">
+
+        </div>
+        
+        <div class="navbar-wrapper scrollblock">
+            <div class="row container-fluid px-0 px-lg-5">
+                <div id="logo-container" class="col-12">
+                    <img class="logo-image" src="assets/img/logo.png" alt="logo" draggable="false"/>
+                </div>
+
+                <div class="col-12 mb-lg-4 px-0">
+                    <nav id="menu" class="navbar navbar-expand-lg" role="navigation">
+                        <a class="navbar-brand">
+                            Red Hot Chili Burger
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+            
+                        <div class="collapse navbar-collapse" id="main-navbar">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link active" href="#about-us">About us <span class="sr-only">(current)</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#order">Make an order</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#locations">Locations</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="about-us" class="container-fluid d-flex align-items-center scrollblock">
+                <div class="about-us-title py-4">
+                    <h2><strong>Who we are?</strong></h2>
+                    <span>The enthusiasts passionate about bringing flavoursome homemade-like burgers and catering to you!</span>
+                </div>
+            </div>
+    
+            <div id="order" class="container-fluid scrollblock">
+                <div class="order-title container-fluid text-center py-3">
+                    <h2><strong>Meet your Burger</strong></h2>
+                </div>
+                <form id="burger-form" method="GET">
+                    <div class="row mt-2 mt-md-1">
+                        <div class="col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-0 col-lg-6 offset-lg-1">
+                            <div class="burger-types container-fluid d-flex flex-column align-items-start flex-sm-row pb-2">
+                                <div class="burger-type-div d-flex justify-content-center ml-sm-3">
+                                    <div class="burger-type-toggle mr-3 mb-2 mb-sm-0">
+                                        <input type="checkbox" id="vegetarian" name="vegetarian"/>
+                                    </div>
+                                    <span>Vegetarian</span>
+                                    <div class="vegetarian-icon ml-2">
+                                        <img src="assets/img/leaf.png" alt="leaf" draggable="false"/>
+                                    </div>
+                                </div>
+
+                                <div class="burger-type-div d-flex justify-content-center ml-sm-5">
+                                    <div class="burger-type-toggle mr-3">
+                                        <input type="checkbox" id="spicy" name="spicy"/>
+                                    </div>
+                                    <span>Spicy</span>
+                                    <div class="vegetarian-icon ml-2">
+                                        <img src="assets/img/pepper.png" alt="pepper" draggable="false"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row table-responsive">
+                                <table class="col-12 table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Layer</th>
+                                            <th colspan="3">Count</th>
+                                            <th>Piece price</th>
+                                            <th>Price</th>
+                                        </tr>    
+                                    </thead>
+                                    <tbody>
+                                        <tr id="patty-table-row">
+                                            <td>Patties</td>
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="patties" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                        <tr id="cheese-table-row">
+                                            <td>Cheese</td>
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="cheese" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                        <tr id="lettuce-table-row">
+                                            <td>Lettuce</td>
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="lettuce" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                        <tr id="onion-table-row">
+                                            <td>Onion</td>
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="onion" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                        <tr id="tomato-table-row">
+                                            <td>Tomato</td> 
+                                            <td><input type="button" class="btn btn-light btn-circle less-button" value="-" disabled="true"/></td>
+                                            <td>
+                                                <input type="text" name="tomato" size="1" placeholder="-" readonly class="ingredient-count form-control-plaintext text-center"/>
+                                            </td>
+                                            <td><input type="button" class="btn btn-light btn-circle more-button" value="+"/></td>
+                                            <td class="piece-price"></td>
+                                            <td class="layer-price"></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5" style="text-align: right;">Total:</td>
+                                            <td id="total-price"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div class="row">
+                                <div class="sauce-types col-12 d-flex justify-content-around flex-wrap py-2">
+                                    <div class="sauce-div">
+                                        <input type="radio" id="classic" name="sauce" value="classic"/>
+                                        <label for="classic">Classic</label>
+                                    </div>
+                                    <div class="sauce-div">
+                                        <input type="radio" id="garlic" name="sauce" value="garlic"/>
+                                        <label for="garlic">Garlic</label>
+                                    </div>
+                                    <div class="sauce-div">
+                                        <input type="radio" id="ranch" name="sauce" value="ranch"/>
+                                        <label for="ranch">Ranch</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="burger-by-layers d-flex flex-column justify-content-center col-sm-12 col-md-3 offset-md-1 col-lg-3 offset-lg-1 mt-4 mt-md-0">
+                            <div class="container-fluid layers-title">
+                                <h5><strong>It will look like...</strong></h5>
+                            </div>
+                            <div class="container layers">
+                                <div id="lettuce-layer" class="layer"></div>
+                                <div id="onion-layer" class="layer"></div>
+                                <div id="tomato-layer" class="layer"></div>
+                                <div id="cheese-layer" class="layer"></div>
+                                <div id="patty-layer" class="layer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3 mt-md-5 mb-3">
+                        <div class="col-12 text-center">
+                            <input type="submit" id="order-button" class="btn btn-primary btn-lg" value="Order me!">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="coupon-field col-12 container-fluid text-center">
+                            <span>Have a Coupon?</span>
+                            <span class="ml-3"><strong>#</strong></span>
+                            <input type="text" id="coupon" class="px-4" name="coupon" maxlength="6" size="6"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    
+            <div id="locations" class="container-fluid scrollblock">
+                <div class="container-fluid locations-title">
+                    <h2><strong>Locations</strong></h2>
+                </div>
+    
+                <div class="locations-cards d-flex flex-md-row flex-wrap flex-column justify-content-around align-items-center">
+                    <div class="card text-center">
+                        <h4><strong>Downtown</strong></h4>
+>>>>>>> other
                         <p>384 West 4th St</p>
                         <p>Suite 108</p>
                         <p>Portland, Maine</p>
                     </div>
+<<<<<<< HEAD
                     <div class="card">
                         <h3>East Bayside</h3>
+=======
+                    <div class="card text-center">
+                        <h4><strong>East Bayside</strong></h4>
+>>>>>>> other
                         <p>3433 Phismerman's Avenue</p>
                         <p>(Northwest Corner)</p>
                         <p>Portland, Maine</p>
                     </div>
+<<<<<<< HEAD
                     <div class="card">
                         <h3>Oakdale</h3>
+=======
+                    <div class="card text-center">
+                        <h4><strong>Oakdale</strong></h4>
+>>>>>>> other
                         <p>515 Crescent Avenue</p>
                         <p>Second Floor</p>
                         <p>Portland, Maine</p>
                     </div>
+<<<<<<< HEAD
                     <div class="diagram" style="width: 20rem; height: 10rem; display: none;">
 
                     </div>
@@ -272,5 +506,32 @@
             
             }
         </script>
+=======
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer container-fluid">
+            <div class="row">
+                <div class="social-networks d-flex justify-content-around offset-sm-1 col-sm-10 offset-lg-1 col-lg-4 offset-xl-2 col-xl-3 my-3">
+                    <a href="#"><img class="social-button" src="assets/img/socials/social-facebook.png" draggable="false"/></a>
+                    <a href="#"><img class="social-button" src="assets/img/socials/social-instagram.png" draggable="false"/></a>
+                    <a href="#"><img class="social-button" src="assets/img/socials/social-pinterest.png" draggable="false"/></a>
+                    <a href="#"><img class="social-button" src="assets/img/socials/social-linkedin.png" draggable="false"/></a>
+                    <a href="#"><img class="social-button" src="assets/img/socials/social-twitter.png" draggable="false"/></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="footer-copyright text-center col-sm-12 offset-lg-5 col-lg-2"><span>© 2016 — 2020</span></div>
+            </div> 
+        </footer>
+        
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/tether.min.js"></script>
+        <script src="js/jquery.scrollorama.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js" async></script>
+>>>>>>> other
     </body>
 </html>
