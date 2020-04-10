@@ -69,6 +69,10 @@ class Ingredient {
         return this.ingredientUrl;
     }
 
+    setIngredientUrl(newUrl) {
+        this.ingredientUrl = newUrl;
+    }
+
     getIngredientClassName() {
         return this.ingredientClassName;
     }
@@ -174,6 +178,16 @@ $(document).ready(function() {
             error: () => alert('Cannot access the server, try again later.')
         });
     });
+
+    $('#vegetarian').change(function() {
+        if ($(this).is(':checked')) {
+            patty.setIngredientUrl(veggiePattyUrl);
+            Array.from(patty.getLayer().children()).forEach(element => $(element).find('img').prop('src', veggiePattyUrl));
+        } else {
+            patty.setIngredientUrl(pattyUrl);
+            Array.from(patty.getLayer().children()).forEach(element => $(element).find('img').prop('src', pattyUrl));
+        }
+    })
 
     patty = new Ingredient(pattyUrl, "patty-ingredient", 1.00, $('#patty-layer'), $('#patty-table-row'));
     cheese = new Ingredient(cheeseUrl, "cheese-ingredient", 0.50, $('#cheese-layer'), $('#cheese-table-row'));

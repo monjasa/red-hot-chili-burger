@@ -7336,7 +7336,7 @@ body {
   #order .burger-by-layers .layers {
     display: flex;
     flex-direction: column;
-    max-height: 25rem;
+    max-height: 28rem;
     overflow-y: auto;
     align-items: center; }
     #order .burger-by-layers .layers::-webkit-scrollbar {
@@ -7385,7 +7385,7 @@ body {
       #order .sauce-types .sauce-div #ranch:checked {
         background-color: #dcfaef; }
   #order #order-button {
-    width: 60%;
+    width: 80%;
     height: 3.5em;
     border: none;
     color: #231f20;
@@ -7460,6 +7460,8 @@ footer .footer-copyright {
     height: 2.1em !important; } }
 
 @media (min-width: 768px) {
+  #order-button {
+    width: 60% !important; }
   .footer-copyright {
     font-size: 1.14rem !important; } }
 

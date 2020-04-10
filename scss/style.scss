@@ -214,7 +214,7 @@ body {
         .layers {
             display: flex;
             flex-direction: column;
-            max-height: 25rem;
+            max-height: 28rem;
             overflow-y: auto;
             align-items: center;
         
@@ -292,7 +292,7 @@ body {
     }
 
     #order-button {
-        width: 60%;
+        width: 80%;
         height: 3.5em;
         border: none;
         color: #231f20;
@@ -396,6 +396,9 @@ footer {
 }
 
 @include media-breakpoint-up(md) {
+    #order-button {
+        width: 60% !important;
+    }
     .footer-copyright {
         font-size: 0.95 * $font-size-base !important;
     }
