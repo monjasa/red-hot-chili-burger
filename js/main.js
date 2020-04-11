@@ -6,9 +6,9 @@ const cheeseUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa
 const lettuceUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/lettuce.png';
 const onionUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/onion.png';
 const tomatoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/tomato.png';
+const navbarLogoUrl = 'https://s3.eu-central-1.amazonaws.com/monjasa.org/org/monjasa/images/navbar-logo.png';
 
 const jsonUrl = 'https://my-json-server.typicode.com/Monjasa/fake-json-server/db';
-const navbarLogoUrl = 'https://i.imgur.com/T45chV1.png';
 
 const upperBun = getLayerFromUrl(upperBunUrl, false);
 const bottomBun = getLayerFromUrl(bottomBunUrl, false);
@@ -39,6 +39,70 @@ function adjustPositioning() {
     scrollorama.settings.offset = -$('#menu').outerHeight() - 5;
 
     $(document).scroll();
+}
+
+function setupScrollingBehaviour() {
+
+    let menu = $('#menu');
+    let previousScroll = menu.outerHeight();
+
+    function scrollingBehaviour() {
+        let menuHeight = menu.outerHeight();
+        
+        if ($(window).outerWidth() < 992) {
+            $(menu)[$(window).scrollTop() >= menuHeight ? 'addClass' : 'removeClass']('navbar-hide');
+            $('.navbar-collapse').collapse('hide');
+        }
+
+        let currentScroll = $(window).scrollTop();
+        if (previousScroll > currentScroll) $(menu).removeClass('navbar-hide');
+        previousScroll = currentScroll;
+
+        if ($(window).outerWidth() >= 992) {
+            if ($(window).scrollTop() >= origOffsetY) {
+                $('.navbar-brand').prepend(navbarLogo);
+            } else {
+                $('.nav-item a').removeClass('active');
+                navbarLogo.remove();
+            }
+        }
+
+        $(menu)[$(window).scrollTop() >= origOffsetY ? 'addClass' : 'removeClass']('fixed-top');
+        $('.placeholder-container').css('height', [$(window).scrollTop() >= origOffsetY ? menuHeight : 0]);
+    }
+
+    $(document).scroll(scrollingBehaviour);
+}
+
+function setupNavbarBehaviour() {
+
+    let blocks = {
+        'block#1': $('a[href="#about-us"]'),
+        'block#2': $('a[href="#order"]'),
+        'block#3': $('a[href="#locations"]')
+    }
+
+    scrollorama.onBlockChange(function() {
+        $('.nav-item a').removeClass('active');
+        $(blocks[`block#${scrollorama.blockIndex}`]).addClass('active');
+    });
+
+    $('.navbar-nav>li>a').click(function(){
+        $('.navbar-collapse').collapse('hide');
+    });
+
+    $('.nav-link').click(function() {    
+        let menuHeight = $('#menu').outerHeight();
+
+        let divId = $(this).attr('href');
+        let offset = $(window).outerWidth() >= 992 ? menuHeight : 0;
+
+        $('html, body').animate({
+          scrollTop: $(divId).offset().top - offset
+        }, 500);
+
+        if ($(window).outerWidth() < 992) setTimeout(() => $('#menu').addClass('navbar-hide'), 525);
+    });
 }
 
 class Ingredient {
@@ -112,76 +176,13 @@ class Ingredient {
     }
 }
 
-let patty, cheese, lettuce, onion, tomato;
-const ingredients = new Map();
-
 $(document).ready(function() { 
-
-    scrollorama.onBlockChange(function() {
-        $('.nav-item a').removeClass('active');
-        $(blocks[`block#${scrollorama.blockIndex}`]).addClass('active');
-    });
-
-    let blocks = {
-        'block#1': $('a[href="#about-us"]'),
-        'block#2': $('a[href="#order"]'),
-        'block#3': $('a[href="#locations"]')
-    }
 
     $(navbarLogo).attr('src', navbarLogoUrl).height(40).width(40);
     $(navbarLogo).on('dragstart', e => false);
     $(navbarLogo).addClass('d-inline-block').addClass('align-top');
     $(navbarLogo).css('margin-right', '0.5em');
     $(navbarLogo).prop('alt', 'Navbar Logo');
-
-    $(window).on('resize', adjustPositioning);
-
-    let menu = $('#menu');
-    let previousScroll = menu.outerHeight();
-
-    function scroll() {
-        let menuHeight = menu.outerHeight();
-        
-        if ($(window).outerWidth() < 992) {
-            $(menu)[$(window).scrollTop() >= menuHeight ? 'addClass' : 'removeClass']('navbar-hide');
-            $('.navbar-collapse').collapse('hide');
-        }
-
-        let currentScroll = $(window).scrollTop();
-        if (previousScroll > currentScroll) $(menu).removeClass('navbar-hide');
-        previousScroll = currentScroll;
-
-        if ($(window).outerWidth() >= 992) {
-            if ($(window).scrollTop() >= origOffsetY) {
-                $('.navbar-brand').prepend(navbarLogo);
-            } else {
-                $('.nav-item a').removeClass('active');
-                navbarLogo.remove();
-            }
-        }
-
-        $(menu)[$(window).scrollTop() >= origOffsetY ? 'addClass' : 'removeClass']('fixed-top');
-        $('.placeholder-container').css('height', [$(window).scrollTop() >= origOffsetY ? menuHeight : 0]);
-    }
-    
-    $(document).scroll(scroll);
-
-    $('.navbar-nav>li>a').click(function(){
-        $('.navbar-collapse').collapse('hide');
-    });
-
-    $('.nav-link').click(function() {    
-        let menuHeight = $('#menu').outerHeight();
-
-        let divId = $(this).attr('href');
-        let offset = $(window).outerWidth() >= 992 ? menuHeight : 0;
-
-        $('html, body').animate({
-          scrollTop: $(divId).offset().top - offset
-        }, 500);
-
-        if ($(window).outerWidth() < 992) setTimeout(() => $('#menu').addClass('navbar-hide'), 525);
-    });
 
     $("#burger-form").submit(function() {
         $(this).find(":input").filter(function() {
@@ -190,6 +191,16 @@ $(document).ready(function() {
     
         return true;
     });
+
+    $('#vegetarian').change(function() {
+        if ($(this).is(':checked')) {
+            patty.setIngredientUrl(veggiePattyUrl);
+            Array.from(patty.getLayer().children()).forEach(element => $(element).find('img').prop('src', veggiePattyUrl));
+        } else {
+            patty.setIngredientUrl(pattyUrl);
+            Array.from(patty.getLayer().children()).forEach(element => $(element).find('img').prop('src', pattyUrl));
+        }
+    })
 
     $('#order-button').click(function(e){
         e.preventDefault();
@@ -208,15 +219,25 @@ $(document).ready(function() {
         });
     });
 
-    $('#vegetarian').change(function() {
-        if ($(this).is(':checked')) {
-            patty.setIngredientUrl(veggiePattyUrl);
-            Array.from(patty.getLayer().children()).forEach(element => $(element).find('img').prop('src', veggiePattyUrl));
-        } else {
-            patty.setIngredientUrl(pattyUrl);
-            Array.from(patty.getLayer().children()).forEach(element => $(element).find('img').prop('src', pattyUrl));
-        }
-    })
+    $(window).on('resize', adjustPositioning);
+
+    setupNavbarBehaviour();
+    setupScrollingBehaviour();
+
+    setupIngredients();
+
+    adjustPositioning();
+    setupStartBurger();
+
+    setupButtonInteractions();
+    setupPrices();
+    updateTable();
+})
+
+let patty, cheese, lettuce, onion, tomato;
+const ingredients = new Map();
+
+function setupIngredients() {
 
     patty = new Ingredient(pattyUrl, "patty-ingredient", 1.00, $('#patty-layer'), $('#patty-table-row'));
     cheese = new Ingredient(cheeseUrl, "cheese-ingredient", 0.50, $('#cheese-layer'), $('#cheese-table-row'));
@@ -229,14 +250,7 @@ $(document).ready(function() {
     ingredients.set(lettuce.getIngredientClassName(), lettuce);
     ingredients.set(onion.getIngredientClassName(), onion);
     ingredients.set(tomato.getIngredientClassName(), tomato);
-
-    adjustPositioning();
-    setupStartBurger();
-
-    setupButtonInteractions();
-    setupPrices();
-    updateTable();
-})
+}
 
 function setupButtonInteractions() {
     ingredients.forEach(ingredient => {
