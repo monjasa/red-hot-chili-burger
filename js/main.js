@@ -176,7 +176,7 @@ class Ingredient {
     }
 }
 
-$(document).ready(function() { 
+$(document).ready(function() {
 
     $(navbarLogo).attr('src', navbarLogoUrl).height(40).width(40);
     $(navbarLogo).on('dragstart', e => false);
@@ -202,21 +202,22 @@ $(document).ready(function() {
         }
     })
 
+
     $('#order-button').click(function(e){
-        e.preventDefault();
-        $.ajax({
-            url: jsonUrl,
-            dataType: 'json',
-            beforeSend: () => {
-                alert('Your order is ready to be sent...');
-            },
-            success: data => alert(data.order.message),
-            complete: () => {
-                alert('It\'s ready!');
-                $('#burger-form').submit();
-            },  
-            error: () => alert('Cannot access the server, try again later.')
-        });
+        // e.preventDefault();
+        // $.ajax({
+        //     url: jsonUrl,
+        //     dataType: 'json',
+        //     beforeSend: () => {
+        //         alert('Your order is ready to be sent...');
+        //     },
+        //     success: data => alert(data.order.message),
+        //     complete: () => {
+        //         alert('It\'s ready!');
+        //         $('#burger-form').submit();
+        //     },  
+        //     error: () => alert('Cannot access the server, try again later.')
+        // });
     });
 
     $(window).on('resize', adjustPositioning);
@@ -283,7 +284,7 @@ function calculatePrice() {
     let price = 1.00;
     ingredients.forEach(ingredient => price += ingredient.getCount() * ingredient.getPrice());
 
-    $('#total-price').html('$' + Number.parseFloat(price).toFixed(2));
+    $('#total-price').val('$' + Number.parseFloat(price).toFixed(2));
 }
 
 function getLayerFromUrl(imageUrl, isDeletable) {

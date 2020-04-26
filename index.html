@@ -23,6 +23,7 @@
     </head>
 
     <body>
+
         <div class="placeholder-container"></div>
         
         <div class="navbar-wrapper scrollblock">
@@ -65,7 +66,7 @@
                 <div class="order-title container-fluid text-center py-3">
                     <h2><strong>Meet your Burger</strong></h2>
                 </div>
-                <form id="burger-form" method="GET">
+                <form id="burger-form" action="form.php" method="POST">
                     <div class="row mt-2 mt-md-1">
                         <div class="col-12 col-sm-10 offset-sm-1 col-md-7 offset-md-0 col-lg-6 offset-lg-1">
                             <div class="burger-types container-fluid d-flex flex-column align-items-start flex-sm-row pb-2">
@@ -155,7 +156,9 @@
                                     <tfoot>
                                         <tr>
                                             <td colspan="5" style="text-align: right;">Total:</td>
-                                            <td id="total-price"></td>
+                                            <td>
+                                                <input type="text" name="price" readonly id="total-price" class="form-control-plaintext text-center price"/>
+                                            </td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -257,6 +260,6 @@
         <script src="js/tether.min.js"></script>
         <script src="js/jquery.scrollorama.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js" async></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
