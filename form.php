@@ -33,8 +33,17 @@
 
         <div id="form-content" class="d-flex justify-content-center">
             <div class="form-order">
-                <div class="row table-responsive">
+                <div class="title row text-center d-flex justify-content-center mb-2">
+                    <h5 class="font-weight-bold">Confirm your order</h5>
+                </div>
+                <div class="form-table row table-responsive px-2">
                     <table class="col-12 table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Layer</th>
+                                <th>Count</th>
+                            </tr>    
+                        </thead>
                         <tbody>
                             <tr>
                                 <td>Patties</td>
@@ -65,22 +74,21 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class="row">
+
+                <div class="order-description row d-flex flex-column text-center px-5 py-3 mx-2 my-3">
+                    <h5 class="font-weight-bold"><?= ucfirst($_POST[sauce]) . " Sauce"; ?></h5>
                     <span><?php
-                        switch ($_POST[sauce]) {
-                            case classic:
-                                echo "Classic";
-                                break;
-                            case garlic:
-                                echo "Garlic";
-                                break;
-                            case ranch:
-                                echo "Ranch";
-                                break;
-                        }   
+                        $sauce_descriptions = [
+                            "classic" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            "garlic" => "At varius vel pharetra vel. Quis risus sed vulputate odio ut enim blandit volutpat.",
+                            "ranch" => "Pharetra vel turpis nunc eget lorem dolor sed. Laoreet id donec ultrices tincidunt arcu non sodales."
+                        ];
+
+                        echo array_key_exists($_POST[sauce], $sauce_descriptions) ? $sauce_descriptions[$_POST[sauce]] : "There's no description for your sauce!";
                     ?></span>
-                </div>  
-                <div class="row">
+                </div>
+
+                <div class="row mt-5">
                     <div class="col-12 text-center">
                         <a href="index.html"><button id="return-button" class="btn btn-primary btn-lg">Confirm order</button></a>
                     </div>
@@ -88,7 +96,7 @@
             </div>
         </div>
 
-        <footer class="footer container-fluid">
+        <footer class="footer container-fluid mt-2">
             <div class="row">
                 <div class="social-networks d-flex justify-content-around offset-sm-1 col-sm-10 offset-lg-1 col-lg-4 offset-xl-2 col-xl-3 my-3">
                     <a href="#"><img class="social-button" src="assets/img/socials/social-facebook.png" draggable="false"/></a>

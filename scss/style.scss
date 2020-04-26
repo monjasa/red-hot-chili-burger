@@ -399,51 +399,67 @@ footer {
 }
 
 #form-content {
-    padding: 3em 0;
+    padding-top: 3em;
 
     .form-order {
         width: 50%;
 
-        .table {
-            $table-border-radius: 1.5em;
-        
-            background-color: $yellow;
-            text-align: center;
-            vertical-align: middle;
-            border-radius: $table-border-radius;
-            box-shadow: $element-shadow;
-        
-            thead > tr > th {
-                border-bottom: none;
-                background-color: #a87d16;
-        
-                &:first-child {
-                    border-top-left-radius: $table-border-radius;
-                }
-        
-                &:last-child {
-                    border-top-right-radius: $table-border-radius;
-                }
-            }
-        
-            tbody > tr > td, th {
-                border-top: none;
-                padding-left: 0;
-                padding-right: 0;
-            }
-        
-            tfoot > tr > td {
-                font-weight: 700;
-                border-top: 1px solid #231f20;
-            }
+        .title {
+            color: $yellow;
+            text-transform: uppercase;
+        }
 
-            .table-number {
-                width: 20%;
+        .form-table {
+            .table {
+                $table-border-radius: 1.5em;
+            
+                background-color: $yellow;
+                text-align: center;
+                vertical-align: middle;
+                border-radius: $table-border-radius;
+                box-shadow: $element-shadow;
+            
+                thead > tr > th {
+                    border-bottom: none;
+                    background-color: #a87d16;
+            
+                    &:first-child {
+                        border-top-left-radius: $table-border-radius;
+                    }
+            
+                    &:last-child {
+                        border-top-right-radius: $table-border-radius;
+                    }
+                }
+            
+                tbody > tr > td, th {
+                    border-top: none;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            
+                tfoot > tr > td {
+                    font-weight: 700;
+                    border-top: 1px solid #231f20;
+                }
+    
+                .table-number {
+                    width: 20%;
+                }
             }
+        }
+        
+
+        .order-description {
+            color: #231f20;
+            background-color: #c5921a;
+
+            border-radius: 1em;
+            box-shadow: 1px 1px 5px #424041;
         }
 
         #return-button {
-            width: 80%;
+            width: 60%;
             height: 3.5em;
             border: none;
             color: #231f20;

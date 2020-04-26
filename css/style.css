@@ -7394,33 +7394,41 @@ footer .footer-copyright {
   color: #fdfdd8; }
 
 #form-content {
-  padding: 3em 0; }
+  padding-top: 3em; }
   #form-content .form-order {
     width: 50%; }
-    #form-content .form-order .table {
+    #form-content .form-order .title {
+      color: #c5921a;
+      text-transform: uppercase; }
+    #form-content .form-order .form-table .table {
       background-color: #c5921a;
       text-align: center;
       vertical-align: middle;
       border-radius: 1.5em;
       box-shadow: 2px 2px 5px #424041; }
-      #form-content .form-order .table thead > tr > th {
+      #form-content .form-order .form-table .table thead > tr > th {
         border-bottom: none;
         background-color: #a87d16; }
-        #form-content .form-order .table thead > tr > th:first-child {
+        #form-content .form-order .form-table .table thead > tr > th:first-child {
           border-top-left-radius: 1.5em; }
-        #form-content .form-order .table thead > tr > th:last-child {
+        #form-content .form-order .form-table .table thead > tr > th:last-child {
           border-top-right-radius: 1.5em; }
-      #form-content .form-order .table tbody > tr > td, #form-content .form-order .table th {
+      #form-content .form-order .form-table .table tbody > tr > td, #form-content .form-order .form-table .table th {
         border-top: none;
         padding-left: 0;
         padding-right: 0; }
-      #form-content .form-order .table tfoot > tr > td {
+      #form-content .form-order .form-table .table tfoot > tr > td {
         font-weight: 700;
         border-top: 1px solid #231f20; }
-      #form-content .form-order .table .table-number {
+      #form-content .form-order .form-table .table .table-number {
         width: 20%; }
+    #form-content .form-order .order-description {
+      color: #231f20;
+      background-color: #c5921a;
+      border-radius: 1em;
+      box-shadow: 1px 1px 5px #424041; }
     #form-content .form-order #return-button {
-      width: 80%;
+      width: 60%;
       height: 3.5em;
       border: none;
       color: #231f20;
