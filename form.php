@@ -17,12 +17,77 @@
         <meta name="theme-color" content="#231f20">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
-        <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body>
+        <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "redhotchiliburger";
+            $tablename = "sauces";
+
+            $conn = new mysqli($servername, $username, $password);         
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            
+            function createDatabase($conn) {
+
+                global $dbname;
+                global $tablename;
+
+                $sql_create_db = "CREATE DATABASE $dbname";
+
+                if ($conn->query($sql_create_db) === FALSE) {
+                    echo "Error creating database: " . $conn->error;
+                    return false;
+                }
+
+                $conn->select_db($dbname);
+
+                $sql_create_table = "CREATE TABLE $tablename (
+                    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                    sauce VARCHAR(30) NOT NULL,
+                    sauce_description VARCHAR(256)
+                )";
+
+                if ($conn->query($sql_create_table) === FALSE) {
+                    echo "Error creating table: " . $conn->error;
+                    return false;
+                }
+
+                $sauce_descriptions = [
+                    "classic" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "garlic" => "At varius vel pharetra vel. Quis risus sed vulputate odio ut enim blandit volutpat.",
+                    "ranch" => "Pharetra vel turpis nunc eget lorem dolor sed. Laoreet id donec ultrices tincidunt arcu non sodales."
+                ];
+
+                $sql_inserts = [
+                    "INSERT INTO $tablename (sauce, sauce_description) VALUES ('classic', '$sauce_descriptions[classic]')",
+                    "INSERT INTO $tablename (sauce, sauce_description) VALUES ('garlic', '$sauce_descriptions[garlic]')",
+                    "INSERT INTO $tablename (sauce, sauce_description) VALUES ('ranch', '$sauce_descriptions[ranch]')"
+                ];
+
+                foreach ($sql_inserts as &$sql_insert_query) {
+                    if ($conn->query($sql_insert_query) === FALSE) {
+                        echo "Error: " . $sql_insert_query . "<br>" . $conn->error;
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            if ($conn->select_db($dbname) === FALSE)
+                createDatabase($conn);
+
+            $conn->close();
+        ?>
+
         <div class="navbar-wrapper scrollblock">
             <div class="row container-fluid px-0 px-lg-5">
                 <div id="logo-container" class="col-12">
@@ -78,13 +143,29 @@
                 <div class="order-description row d-flex flex-column text-center px-5 py-3 mx-2 my-3">
                     <h5 class="font-weight-bold"><?= ucfirst($_POST[sauce]) . " Sauce"; ?></h5>
                     <span><?php
-                        $sauce_descriptions = [
-                            "classic" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                            "garlic" => "At varius vel pharetra vel. Quis risus sed vulputate odio ut enim blandit volutpat.",
-                            "ranch" => "Pharetra vel turpis nunc eget lorem dolor sed. Laoreet id donec ultrices tincidunt arcu non sodales."
-                        ];
-
-                        echo array_key_exists($_POST[sauce], $sauce_descriptions) ? $sauce_descriptions[$_POST[sauce]] : "There's no description for your sauce!";
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "redhotchiliburger";
+                        $tablename = "sauces";
+                        
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        
+                        $sql = "SELECT sauce_description FROM $tablename WHERE sauce = '$_POST[sauce]'";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo $row["sauce_description"];
+                            }
+                        } else {
+                            echo "There's no description for your sauce!";
+                        }
+                        
+                        $conn->close();
                     ?></span>
                 </div>
 
